@@ -2,11 +2,9 @@ from Tools import tools_v000 as tools
 import os
 from os.path import dirname
 
-import time
-
 from selenium.webdriver.common.keys import Keys
 
-# -7 for the name of this project NewProjectPython
+# -7 for the name of this project Myhours
 save_path = dirname(__file__)[ : -7]
 propertiesFolder_path = save_path + "Properties"
 
