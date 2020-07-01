@@ -77,7 +77,7 @@ def modifyTrack(jira, description, epic_link) :
     # Billable time     
     tools.waitLoadingPageByXPATH('/html/body/div[1]/div/div/log-edit-modal/div[2]/form/div[4]/div[2]/div/input')  
     billable_time = tools.driver.find_element_by_xpath('/html/body/div[1]/div/div/log-edit-modal/div[2]/form/div[4]/div[2]/div/input')
-    billable_time.send_keys(Keys.SPACE)
+    # billable_time.send_keys(Keys.SPACE)
 
     # Description
     tools.waitLoadingPageByID('logAddEditDescription')
