@@ -1,7 +1,7 @@
-from Tools import tools_v000 as tools
 import os
+import time
+from Tools import tools_v000 as tools
 from os.path import dirname
-
 from selenium.webdriver.common.keys import Keys
 
 # -7 for the name of this project Myhours
@@ -54,6 +54,8 @@ def modifyTrack(jira, description, epic_link) :
     tools.waitLoadingPageByID('taskLookup')
     taskLookup = tools.driver.find_element_by_id('taskLookup')
     taskLookup.click()
+
+    time.sleep(1)
 
     tools.waitLoadingPageByXPATH('/html/body/div[7]/div/div[2]/div[1]/div/div/div[1]/input')  
     projectInput = tools.driver.find_element_by_xpath('/html/body/div[7]/div/div[2]/div[1]/div/div/div[1]/input')
