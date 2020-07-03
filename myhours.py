@@ -1,5 +1,6 @@
 import os
 import time
+
 from Tools import tools_v000 as tools
 from os.path import dirname
 from selenium.webdriver.common.keys import Keys
@@ -45,10 +46,33 @@ def modifyTrack(jira, description, epic_link) :
     projectInput = tools.driver.find_element_by_xpath('/html/body/div[7]/div/div[2]/div[1]/div/div/div[1]/input')
     projectInput.send_keys(epic_link)
 
-    ## Select Project
-    tools.waitLoadingPageByXPATH('/html/body/div[7]/div/div[2]/div[2]/div[1]/div/div[1]/div[2]/div/div[2]/div/div')  
-    projectSelect = tools.driver.find_element_by_xpath('/html/body/div[7]/div/div[2]/div[2]/div[1]/div/div[1]/div[2]/div/div[2]/div/div')
-    projectSelect.click()
+    time.sleep(1)
+
+    tools.waitLoadingPageByXPATH('/html/body/div[7]/div/div[2]/div[2]/div[1]/div/div[1]/div[2]/div') 
+    projectList = tools.driver.find_element_by_xpath('/html/body/div[7]/div/div[2]/div[2]/div[1]/div/div[1]/div[2]/div')
+    if projectList.text == 'No projects found.' :
+        print ("No project found => create a new one")
+        # Create a new Project        
+        tools.waitLoadingPageByXPATH('/html/body/div[7]/div/div[3]/div/div[1]/button') 
+        create_button = tools.driver.find_element_by_xpath('/html/body/div[7]/div/div[3]/div/div[1]/button')
+        create_button.click()
+
+        tools.waitLoadingPageByXPATH('/html/body/div[7]/div/div[2]/div/div/div[3]/button') 
+        select_society_input = tools.driver.find_element_by_xpath('/html/body/div[7]/div/div[2]/div/div/div[2]/div/div/div/div/div/div[1]/p')
+        select_society_input.click()
+                                      
+        tools.waitLoadingPageByXPATH('/html/body/div[8]/div/div[2]/div[2]/div[1]/div/div[1]/div[2]/div/div')
+        select_society = tools.driver.find_element_by_xpath('/html/body/div[8]/div/div[2]/div[2]/div[1]/div/div[1]/div[2]/div/div')
+        select_society.click()
+
+        tools.waitLoadingPageByXPATH('/html/body/div[7]/div/div[2]/div/div/div[3]/button') 
+        create_button2 = tools.driver.find_element_by_xpath('/html/body/div[7]/div/div[2]/div/div/div[3]/button')
+        create_button2.click()
+    else :        
+        ## Select Project
+        tools.waitLoadingPageByXPATH('/html/body/div[7]/div/div[2]/div[2]/div[1]/div/div[1]/div[2]/div/div[2]/div/div')  
+        projectSelect = tools.driver.find_element_by_xpath('/html/body/div[7]/div/div[2]/div[2]/div[1]/div/div[1]/div[2]/div/div[2]/div/div')
+        projectSelect.click()
 
     # Task
     tools.waitLoadingPageByID('taskLookup')
