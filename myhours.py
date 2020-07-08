@@ -83,6 +83,7 @@ def modifyTrack(jira, description, epic_link) :
 
     tools.waitLoadingPageByXPATH('/html/body/div[7]/div/div[2]/div[1]/div/div/div[1]/input')  
     projectInput = tools.driver.find_element_by_xpath('/html/body/div[7]/div/div[2]/div[1]/div/div/div[1]/input')
+    time.sleep(1) # To fast if not present
     projectInput.send_keys('JIRA')
 
     ## Select Task
