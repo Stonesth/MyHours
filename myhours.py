@@ -37,7 +37,7 @@ def startTrack() :
     timeStep1.click()
 
 
-def startTrackWithName(track_name) :
+def startTrackWithName(track_name, description, epic_link) :
     tools.waitLoadingPageByID2(10, 'timeStep1')
     timeStep1 = tools.driver.find_element_by_id('timeStep1')
 
@@ -59,7 +59,6 @@ def startTrackWithName(track_name) :
         if (i.text.find(track_name) >= 0) :
             found = True
             break
-        
     
     # if found click to Resume button, else create a new track
     if (found) :
@@ -67,6 +66,7 @@ def startTrackWithName(track_name) :
        resumeButton.click()
     else :
        timeStep1.click()
+       modifyTrack(track_name, )
 
 def modifyTrack(jira, description, epic_link) :
     # Edit the button
@@ -118,7 +118,7 @@ def modifyTrack(jira, description, epic_link) :
 
     time.sleep(1)
 
-    tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="taskInputId"]/div[1]/div[1]/div/div/div/div/div[1]/input')  
+    tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="taskInputId"]/div[1]/div[1]/div/div/div/div/div[1]/input')
     projectInput = tools.driver.find_element_by_xpath('//*[@id="taskInputId"]/div[1]/div[1]/div/div/div/div/div[1]/input')
     projectInput.send_keys('JIRA')
     time.sleep(1) # To fast if not present
