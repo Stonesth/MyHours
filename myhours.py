@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- coding:utf-8 -*-
 import os
 import time
 
@@ -31,6 +33,38 @@ def startTrack() :
     tools.waitLoadingPageByID('timeStep1')
     timeStep1 = tools.driver.find_element_by_id('timeStep1')
     timeStep1.click()
+
+
+def startTrackWithName(track_name) :
+    tools.waitLoadingPageByID2(10, 'timeStep1')
+    timeStep1 = tools.driver.find_element_by_id('timeStep1')
+
+    # Stop the current run
+    stopCurrentLog = tools.driver.find_element_by_id('stopCurrentLog')
+    stopCurrentLog.click()
+    
+    # Place this line because there is a refresh of the page after stopping the currentLog
+    tools.waitLoadingPageByID2(10, 'timeStep1')
+    time.sleep(1)
+    
+    # Find all the different entry
+    listAppWrapper = tools.driver.find_elements_by_xpath("//div[@class = 'd-flex flex-column my-1 col-12 col-xl-7']")
+
+    j = 1
+    found = False
+    for i in listAppWrapper:
+        j = j + 1
+        if (i.text.find(track_name) >= 0) :
+            found = True
+            break
+        
+    
+    # if found click to Resume button, else create a new track
+    if (found) :
+       resumeButton = tools.driver.find_element_by_xpath("/html/body/div[1]/div/div/layout/div/div[2]/div/div/compact/div/div[2]/log-list/div["+str(j)+"]/div/div/div[3]/log-action-toolbar/div/button[1]/span")
+       resumeButton.click()
+    else :
+       timeStep1.click()
 
 def modifyTrack(jira, description, epic_link) :
     # Edit the button
