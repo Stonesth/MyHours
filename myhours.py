@@ -68,6 +68,9 @@ def startTrackWithDescription(jira, description, epic_link) :
        timeStep1.click()
        modifyTrack(jira, description, epic_link)
 
+    # To let the time to refresh the page
+    time.sleep(2)
+
 def modifyTrack(jira, description, epic_link) :
     # Edit the button
     tools.waitLoadingPageByID2(dealy_properties, 'runningEdit')
