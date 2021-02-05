@@ -86,6 +86,7 @@ def modifyTrack(jira, description, epic_link) :
     time.sleep(1)
 
     tools.waitLoadingPageByXPATH2(dealy_properties, '/html/body/div[7]/div/div[2]/div[2]/div[1]/div/div[1]/div[2]/div') 
+    time.sleep(1)
     projectList = tools.driver.find_element_by_xpath('/html/body/div[7]/div/div[2]/div[2]/div[1]/div/div[1]/div[2]/div')
     if projectList.text == 'No projects found.' :
         print ("No project found => create a new one")
