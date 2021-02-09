@@ -142,6 +142,7 @@ def modifyTrack(jira, description, epic_link) :
     tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="tagSelect"]/div[1]/div/div[1]/input')  
     tagInput = tools.driver.find_element_by_xpath('//*[@id="tagSelect"]/div[1]/div/div[1]/input')
     tagInput.send_keys(jira)
+    time.sleep(2)
     tagInput.send_keys(Keys.ENTER)
 
     # Billable time     
