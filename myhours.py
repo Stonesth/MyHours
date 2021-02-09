@@ -66,6 +66,8 @@ def startTrackWithDescription(jira, description, epic_link) :
        resumeButton.click()
     else :
        timeStep1.click()
+       # start a new track
+       startTrack()
        modifyTrack(jira, description, epic_link)
 
     # To let the time to refresh the page
