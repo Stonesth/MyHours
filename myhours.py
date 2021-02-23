@@ -84,38 +84,38 @@ def modifyTrack(jira, description, epic_link) :
     projectLookup = tools.driver.find_element_by_id('projectLookup')
     projectLookup.click()
                                                      
-    tools.waitLoadingPageByXPATH2(dealy_properties, '/html/body/div[6]/div/div[2]/div[1]/div/div/div[1]/input')  
-    time.sleep(1)
-    projectInput = tools.driver.find_element_by_xpath('/html/body/div[6]/div/div[2]/div[1]/div/div/div[1]/input')
+    tools.waitLoadingPageByXPATH2(dealy_properties, '/html/body/div[7]/div/div[2]/div[1]/div/div/div[1]/input')  
+    time.sleep(2)
+    projectInput = tools.driver.find_element_by_xpath('/html/body/div[7]/div/div[2]/div[1]/div/div/div[1]/input')
     projectInput.send_keys(epic_link)
 
-    time.sleep(1)
+    time.sleep(2)
                                                      
-    tools.waitLoadingPageByXPATH2(dealy_properties, '/html/body/div[6]/div/div[2]/div[2]/div[1]/div/div[1]/div[2]/div') 
-    time.sleep(1)
-    projectList = tools.driver.find_element_by_xpath('/html/body/div[6]/div/div[2]/div[2]/div[1]/div/div[1]/div[2]/div')
+    tools.waitLoadingPageByXPATH2(dealy_properties, '/html/body/div[7]/div/div[2]/div[2]/div[1]/div/div[1]/div[2]/div') 
+    time.sleep(2)
+    projectList = tools.driver.find_element_by_xpath('/html/body/div[7]/div/div[2]/div[2]/div[1]/div/div[1]/div[2]/div')
     if projectList.text == 'No projects found.' :
         print ("No project found => create a new one")
         # Create a new Project        
-        tools.waitLoadingPageByXPATH2(dealy_properties, '/html/body/div[6]/div/div[3]/div/div[1]/button') 
-        create_button = tools.driver.find_element_by_xpath('/html/body/div[6]/div/div[3]/div/div[1]/button')
+        tools.waitLoadingPageByXPATH2(dealy_properties, '/html/body/div[7]/div/div[3]/div/div[1]/button') 
+        create_button = tools.driver.find_element_by_xpath('/html/body/div[7]/div/div[3]/div/div[1]/button')
         create_button.click()
 
-        tools.waitLoadingPageByXPATH2(dealy_properties, '/html/body/div[6]/div/div[2]/div/div/div[3]/button') 
-        select_society_input = tools.driver.find_element_by_xpath('/html/body/div[6]/div/div[2]/div/div/div[2]/div/div/div/div/div/div[1]/p')
+        tools.waitLoadingPageByXPATH2(dealy_properties, '/html/body/div[7]/div/div[2]/div/div/div[3]/button') 
+        select_society_input = tools.driver.find_element_by_xpath('/html/body/div[7]/div/div[2]/div/div/div[2]/div/div/div/div/div/div[1]/p')
         select_society_input.click()
                                       
         tools.waitLoadingPageByXPATH2(dealy_properties, '/html/body/div[7]/div/div[2]/div[2]/div[1]/div/div[1]/div[2]/div/div')
         select_society = tools.driver.find_element_by_xpath('/html/body/div[7]/div/div[2]/div[2]/div[1]/div/div[1]/div[2]/div/div')
         select_society.click()
 
-        tools.waitLoadingPageByXPATH2(dealy_properties, '/html/body/div[6]/div/div[2]/div/div/div[3]/button') 
-        create_button2 = tools.driver.find_element_by_xpath('/html/body/div[6]/div/div[2]/div/div/div[3]/button')
+        tools.waitLoadingPageByXPATH2(dealy_properties, '/html/body/div[7]/div/div[2]/div/div/div[3]/button') 
+        create_button2 = tools.driver.find_element_by_xpath('/html/body/div[7]/div/div[2]/div/div/div[3]/button')
         create_button2.click()
     else :        
         ## Select Project
-        tools.waitLoadingPageByXPATH2(dealy_properties, '/html/body/div[6]/div/div[2]/div[2]/div[1]/div/div[1]/div[2]/div/div[2]/div/div')  
-        projectSelect = tools.driver.find_element_by_xpath('/html/body/div[6]/div/div[2]/div[2]/div[1]/div/div[1]/div[2]/div/div[2]/div/div')
+        tools.waitLoadingPageByXPATH2(dealy_properties, '/html/body/div[7]/div/div[2]/div[2]/div[1]/div/div[1]/div[2]/div/div[2]/div/div')  
+        projectSelect = tools.driver.find_element_by_xpath('/html/body/div[7]/div/div[2]/div[2]/div[1]/div/div[1]/div[2]/div/div[2]/div/div')
         projectSelect.click()
 
     # Task
@@ -124,7 +124,7 @@ def modifyTrack(jira, description, epic_link) :
     taskLookup.click()
 
     time.sleep(1)
-
+                                                     
     tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="taskInputId"]/div[1]/div[1]/div/div/div/div/div[1]/input')
     projectInput = tools.driver.find_element_by_xpath('//*[@id="taskInputId"]/div[1]/div[1]/div/div/div/div/div[1]/input')
     projectInput.send_keys('JIRA')
