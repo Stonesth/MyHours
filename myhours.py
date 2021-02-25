@@ -104,11 +104,13 @@ def modifyTrack(jira, description, epic_link) :
         tools.waitLoadingPageByXPATH2(dealy_properties, '/html/body/div[7]/div/div[2]/div/div/div[3]/button') 
         select_society_input = tools.driver.find_element_by_xpath('/html/body/div[7]/div/div[2]/div/div/div[2]/div/div/div/div/div/div[1]/p')
         select_society_input.click()
-                                      
-        tools.waitLoadingPageByXPATH2(dealy_properties, '/html/body/div[7]/div/div[2]/div[2]/div[1]/div/div[1]/div[2]/div/div')
-        select_society = tools.driver.find_element_by_xpath('/html/body/div[7]/div/div[2]/div[2]/div[1]/div/div[1]/div[2]/div/div')
+        
+        # Select the society Delta Lloyd Life
+        tools.waitLoadingPageByXPATH2(dealy_properties, '/html/body/div[8]/div/div[2]/div[2]/div[1]/div/div[1]/div[2]/div/div')
+        select_society = tools.driver.find_element_by_xpath('/html/body/div[8]/div/div[2]/div[2]/div[1]/div/div[1]/div[2]/div/div')
         select_society.click()
 
+        # Click into the button Create
         tools.waitLoadingPageByXPATH2(dealy_properties, '/html/body/div[7]/div/div[2]/div/div/div[3]/button') 
         create_button2 = tools.driver.find_element_by_xpath('/html/body/div[7]/div/div[2]/div/div/div[3]/button')
         create_button2.click()
