@@ -10,7 +10,7 @@ from selenium.webdriver.common.keys import Keys
 # -7 for the name of this project Myhours
 save_path = dirname(__file__)[ : -7]
 # save_path = os.path.dirname(os.path.abspath("__file__"))[ : -7]
-propertiesFolder_path = save_path + "/"+ "Properties"
+propertiesFolder_path = save_path + "Properties"
 
 user_text = tools.readProperty(propertiesFolder_path, 'Myhours', 'user_text=')
 password_text = tools.readProperty(propertiesFolder_path, 'Myhours', 'password_text=')
