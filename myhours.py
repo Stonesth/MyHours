@@ -47,7 +47,7 @@ def startTrackWithDescription(jira, description, epic_link) :
     startTrack()
 
     # Click on the current run 
-    timeStep1 = tools.driver.find_element_by_xpath('//*[@id="trackPage"]/div[5]/div/div[2]')
+    timeStep1 = tools.driver.find_element_by_xpath('//*[@id="trackPage"]/div[4]/div/div[2]')
 
     timeStep1.click()
     modifyTrack(jira, description, epic_link)
