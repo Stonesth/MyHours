@@ -97,6 +97,7 @@ def modifyTrack(jira, description, epic_link) :
     # Project
     tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="projectInputId"]/div/div[1]/div/div/div/div/div[1]/input')
     projectLookup = tools.driver.find_element_by_xpath('//*[@id="projectInputId"]/div/div[1]/div/div/div/div/div[1]/input')
+    time.sleep(1)
     projectLookup.click()
                                                      
     tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="projectInputId"]/div[1]/div[1]/div/div/div/div/div[1]/input')  
