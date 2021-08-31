@@ -32,12 +32,22 @@ def enterCredentials() :
 
 def startTrack() :
     # Start the chrono
-    tools.waitLoadingPageByID2(dealy_properties, 'timeStep1')
-    timeStep1 = tools.driver.find_element_by_id('timeStep1')
+    tools.waitLoadingPageByID2(dealy_properties, 'trackPage')
+    timeStep1 = tools.driver.find_element_by_id('startNewButton')
     timeStep1.click()
 
-
 def startTrackWithDescription(jira, description, epic_link) :
+    tools.waitLoadingPageByID2(10, 'trackPage')
+    startTrack()
+    timeStep1 = tools.driver.find_element_by_xpath('//*[@id="trackPage"]/div[5]/div/div[2]')
+
+    timeStep1.click()
+    modifyTrack(jira, description, epic_link)
+    
+    # To let the time to refresh the page
+    time.sleep(2)
+
+def startTrackWithDescription_1(jira, description, epic_link) :
     tools.waitLoadingPageByID2(10, 'timeStep1')
     timeStep1 = tools.driver.find_element_by_id('timeStep1')
 
@@ -74,6 +84,56 @@ def startTrackWithDescription(jira, description, epic_link) :
     time.sleep(2)
 
 def modifyTrack(jira, description, epic_link) :
+    # Project
+    tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="projectInputId"]/div/div[1]/div/div/div/div/div[1]/input')
+    projectLookup = tools.driver.find_element_by_xpath('//*[@id="projectInputId"]/div/div[1]/div/div/div/div/div[1]/input')
+    projectLookup.click()
+                                                     
+    tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="projectInputId"]/div[1]/div[1]/div/div/div/div/div[1]/input')  
+    time.sleep(2)
+    projectInput = tools.driver.find_element_by_xpath('//*[@id="projectInputId"]/div[1]/div[1]/div/div/div/div/div[1]/input')
+    projectInput.send_keys(epic_link)
+
+    # Press Enter
+    projectInput.send_keys(Keys.ENTER)
+
+    time.sleep(2)
+
+    # Task
+    tools.waitLoadingPageByID2(dealy_properties, 'trackPageAddFormTask')
+    taskLookup = tools.driver.find_element_by_id('trackPageAddFormTask')
+    taskLookup.click()
+
+    time.sleep(1)
+                                                     
+    tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="trackPageAddFormTask"]/div[1]/div[1]/div/div/div/div/div[1]/input')
+    projectInput = tools.driver.find_element_by_xpath('//*[@id="trackPageAddFormTask"]/div[1]/div[1]/div/div/div/div/div[1]/input')
+    projectInput.send_keys('JIRA')
+    time.sleep(1) # To fast if not present
+    projectInput.send_keys(Keys.ENTER)
+    
+    # TAG
+    tools.waitLoadingPageByID2(dealy_properties, 'tagSelect')
+    tagLookup = tools.driver.find_element_by_id('tagSelect')
+    tagLookup.click()
+
+    tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="tagSelect"]/div[1]/div/div[1]/input')  
+    tagInput = tools.driver.find_element_by_xpath('//*[@id="tagSelect"]/div[1]/div/div[1]/input')
+    tagInput.send_keys(jira)
+    time.sleep(2)
+    tagInput.send_keys(Keys.ENTER)
+
+    # Description
+    tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="editor"]/div[1]')
+    logAddEditDescription = tools.driver.find_element_by_xpath('//*[@id="editor"]/div[1]')
+    logAddEditDescription.send_keys(description)
+    
+    # editLog
+    tools.waitLoadingPageByID2(dealy_properties, 'addTimeLogButton')
+    editLog = tools.driver.find_element_by_id('addTimeLogButton')
+    editLog.click()
+
+def modifyTrack_1(jira, description, epic_link) :
     # Edit the button
     tools.waitLoadingPageByID2(dealy_properties, 'runningEdit')
     runningEdit = tools.driver.find_element_by_id('runningEdit')
