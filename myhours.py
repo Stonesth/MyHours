@@ -102,8 +102,10 @@ def modifyTrack(jira, description, epic_link) :
     projectInput = tools.driver.find_element_by_xpath('//*[@id="projectInputId"]/div[1]/div[1]/div/div/div/div/div[1]/input')
     projectInput.send_keys(epic_link)
 
-    # Press Enter
-    projectInput.send_keys(Keys.ENTER)
+    # Select the Project
+    tools.waitLoadingPageByID2(10, 'trackPageAddFormTask')    
+    create_button2 = tools.driver.find_element_by_id('trackPageAddFormTask')
+    create_button2.click()
 
     time.sleep(2)
 
