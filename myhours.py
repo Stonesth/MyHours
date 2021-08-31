@@ -6,6 +6,7 @@ import time
 from Tools import tools_v000 as tools
 from os.path import dirname
 from selenium.webdriver.common.keys import Keys
+from selenium.common.exceptions import TimeoutException
 
 # -7 for the name of this project Myhours
 save_path = dirname(__file__)[ : -7]
@@ -33,12 +34,19 @@ def enterCredentials() :
 def startTrack() :
     # Start the chrono
     tools.waitLoadingPageByID2(dealy_properties, 'trackPage')
-    timeStep1 = tools.driver.find_element_by_id('startNewButton')
-    timeStep1.click()
+
+    try:
+        timeStep1 = tools.driver.find_element_by_id('startButton')
+        timeStep1.click()
+    except TimeoutException:
+        timeStep1 = tools.driver.find_element_by_id('startNewButton')
+        timeStep1.click()
 
 def startTrackWithDescription(jira, description, epic_link) :
     tools.waitLoadingPageByID2(10, 'trackPage')
     startTrack()
+
+    # Click on the current run 
     timeStep1 = tools.driver.find_element_by_xpath('//*[@id="trackPage"]/div[5]/div/div[2]')
 
     timeStep1.click()
