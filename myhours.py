@@ -37,15 +37,14 @@ def startTrack() :
     tools.waitLoadingPageByID2(dealy_properties, 'trackPage')
 
     timeStep1 = tools.driver.find_element_by_id('startButton')
-    timeStep1.click()
-    print ("Started a new activity")
-
     try:
+        tools.waitLoadingPageByID2(dealy_properties, 'startButton')
         timeStep1 = tools.driver.find_element_by_id('startButton')
         timeStep1.click()
         print ("Started a new activity")
     except TimeoutException:
         print ("Clock already started - start new activity")
+        tools.waitLoadingPageByID2(dealy_properties, 'startNewButton')
         timeStep1 = tools.driver.find_element_by_id('startNewButton')
         timeStep1.click()
 
