@@ -126,6 +126,7 @@ def modifyTrack(jira, description, epic_link) :
     # Select the Project
     time.sleep(1)
     projectInput.click()
+    projectInput.click()
     time.sleep(1)
     press('enter')
     # time.sleep(2)
