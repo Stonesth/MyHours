@@ -108,8 +108,8 @@ def modifyTrack(jira, description, epic_link) :
 
     # Select the Project
     time.sleep(2)
-    tools.waitLoadingPageByXPATH2(10, '//*[@id="AppWrapper"]/div[7]/div')  
-    create_button2 = tools.driver.find_element_by_xpath('//*[@id="AppWrapper"]/div[7]/div')
+    tools.waitLoadingPageByXPATH2(10, '//*[@id="dx-73199497-8492-17a7-ead5-1c8b12f44816"]/div[1]/div/div[1]/div[2]/div[2]/div[2]/div[81]/div/span')  
+    create_button2 = tools.driver.find_element_by_xpath('//*[@id="dx-73199497-8492-17a7-ead5-1c8b12f44816"]/div[1]/div/div[1]/div[2]/div[2]/div[2]/div[81]/div/span')
     create_button2.click()
     # projectInput.send_keys(Keys.ENTER) 
     time.sleep(2)
