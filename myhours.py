@@ -36,7 +36,14 @@ def startTrack() :
     # Start the chrono
     tools.waitLoadingPageByID2(dealy_properties, 'trackPage')
 
-    timeStep1 = tools.driver.find_element_by_id('startButton')
+    # Stop the current Chrono
+    print ("Stop the chrono")
+    time.sleep(2)
+    tools.waitLoadingPageByID2(dealy_properties, 'stopWorkButton')
+    stopTimeStep1 = tools.driver.find_element_by_id('stopWorkButton')
+    stopTimeStep1.click()
+    time.sleep(2)
+
     try:
         tools.waitLoadingPageByID2(dealy_properties, 'startButton')
         timeStep1 = tools.driver.find_element_by_id('startButton')
