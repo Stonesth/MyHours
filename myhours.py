@@ -64,12 +64,14 @@ def startTrackWithDescription(jira, description, epic_link) :
     startTrack()
 
     time.sleep(2)
-    # Click on the current run                      
+    # Click on the current run
+    print ("Click on the current run")                     
     timeStep1 = tools.driver.find_element_by_xpath('/html/body/div[1]/div/div/track-page/div/div[4]/div/div[2]')
-    timeStep1.click()
-    
+    timeStep1.click()    
     time.sleep(2)
 
+    # Do the modification of the track
+    print ("Do the modification of the track")     
     modifyTrack(jira, description, epic_link)
     
     # To let the time to refresh the page
