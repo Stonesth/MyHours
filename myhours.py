@@ -36,12 +36,16 @@ def startTrack() :
     # Start the chrono
     tools.waitLoadingPageByID2(dealy_properties, 'trackPage')
 
+    timeStep1 = tools.driver.find_element_by_id('startButton')
+    timeStep1.click()
+    print ("Started a new activity")
+
     try:
-        print ("Clock not already started")
         timeStep1 = tools.driver.find_element_by_id('startButton')
         timeStep1.click()
+        print ("Started a new activity")
     except TimeoutException:
-        print ("Clock already started")
+        print ("Clock already started - start new activity")
         timeStep1 = tools.driver.find_element_by_id('startNewButton')
         timeStep1.click()
 
