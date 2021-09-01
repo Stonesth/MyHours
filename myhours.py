@@ -7,6 +7,7 @@ from Tools import tools_v000 as tools
 from os.path import dirname
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import TimeoutException
+from selenium.common.exceptions import NoSuchElementException
 from keyboard import press
 
 # -7 for the name of this project Myhours
@@ -37,12 +38,15 @@ def startTrack() :
     tools.waitLoadingPageByID2(dealy_properties, 'trackPage')
 
     # Stop the current Chrono
-    print ("Stop the chrono")
-    time.sleep(2)
-    tools.waitLoadingPageByID2(dealy_properties, 'stopWorkButton')
-    stopTimeStep1 = tools.driver.find_element_by_id('stopWorkButton')
-    stopTimeStep1.click()
-    time.sleep(2)
+    try :
+        print ("Stop the chrono")
+        time.sleep(1)
+        tools.waitLoadingPageByID2(dealy_properties, 'stopWorkButton')
+        stopTimeStep1 = tools.driver.find_element_by_id('stopWorkButton')
+        stopTimeStep1.click()
+        time.sleep(1)
+    except NoSuchElementException:
+        print ("Not possible to stop. because already stopped")
 
     try:
         tools.waitLoadingPageByID2(dealy_properties, 'startButton')
