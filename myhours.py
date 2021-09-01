@@ -37,9 +37,11 @@ def startTrack() :
     tools.waitLoadingPageByID2(dealy_properties, 'trackPage')
 
     try:
+        print ("Clock not already started")
         timeStep1 = tools.driver.find_element_by_id('startButton')
         timeStep1.click()
     except TimeoutException:
+        print ("Clock already started")
         timeStep1 = tools.driver.find_element_by_id('startNewButton')
         timeStep1.click()
 
@@ -47,7 +49,7 @@ def startTrackWithDescription(jira, description, epic_link) :
     tools.waitLoadingPageByID2(10, 'trackPage')
     startTrack()
 
-    time.sleep(1)
+    time.sleep(2)
     # Click on the current run                      
     timeStep1 = tools.driver.find_element_by_xpath('/html/body/div[1]/div/div/track-page/div/div[4]/div/div[2]')
     timeStep1.click()
