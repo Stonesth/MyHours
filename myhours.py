@@ -7,6 +7,7 @@ from Tools import tools_v000 as tools
 from os.path import dirname
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import TimeoutException
+from keyboard import press
 
 # -7 for the name of this project Myhours
 save_path = dirname(__file__)[ : -7]
@@ -107,10 +108,11 @@ def modifyTrack(jira, description, epic_link) :
     projectInput.send_keys(epic_link)
 
     # Select the Project
-    time.sleep(2)
-    tools.waitLoadingPageByXPATH2(10, '/html/body/div/div/div/div/div[1]/div/div[1]/div[2]/div[2]/div[2]/div[81]/div/span')  
-    create_button2 = tools.driver.find_element_by_xpath('/html/body/div/div/div/div/div[1]/div/div[1]/div[2]/div[2]/div[2]/div[81]/div/span')
-    create_button2.click()
+    press('enter')
+    # time.sleep(2)
+    # tools.waitLoadingPageByXPATH2(10, '/html/body/div[6]/div/div/div/div[1]/div/div[1]/div[2]/div[2]/div[2]/div[81]/div/span')  
+    # create_button2 = tools.driver.find_element_by_xpath('/html/body/div[6]/div/div/div/div[1]/div/div[1]/div[2]/div[2]/div[2]/div[81]/div/span')
+    # create_button2.click()
     # projectInput.send_keys(Keys.ENTER) 
     time.sleep(2)
 
