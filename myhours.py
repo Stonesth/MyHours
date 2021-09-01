@@ -124,6 +124,7 @@ def modifyTrack(jira, description, epic_link) :
     projectInput.send_keys(epic_link)
 
     # Select the Project
+    projectInput.click()
     press('enter')
     # time.sleep(2)
     # tools.waitLoadingPageByXPATH2(10, '/html/body/div[6]/div/div/div/div[1]/div/div[1]/div[2]/div[2]/div[2]/div[81]/div/span')  
