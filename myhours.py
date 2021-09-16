@@ -130,7 +130,7 @@ def modifyTrack(jira, description, epic_link) :
     projectInput.click()
     projectInput.click()
     time.sleep(1)
-    press('enter')
+    # press('enter')
     # time.sleep(2)
     # tools.waitLoadingPageByXPATH2(10, '/html/body/div[6]/div/div/div/div[1]/div/div[1]/div[2]/div[2]/div[2]/div[81]/div/span')  
     # create_button2 = tools.driver.find_element_by_xpath('/html/body/div[6]/div/div/div/div[1]/div/div[1]/div[2]/div[2]/div[2]/div[81]/div/span')
