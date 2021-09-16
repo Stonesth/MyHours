@@ -126,10 +126,13 @@ def modifyTrack(jira, description, epic_link) :
     projectInput.send_keys(epic_link)
 
     # Select the Project
+    # time.sleep(1)
+    # projectInput.click()
     time.sleep(1)
-    projectInput.click()
-    projectInput.click()
+    tools.waitLoadingPageByXPATH2(dealy_properties, '/html/body/div[7]/div/div/div/div[1]/div/div[1]/div[2]/div/div[2]/div[1]/div/span')
     time.sleep(1)
+    select = tools.driver.find_element_by_xpath('/html/body/div[7]/div/div/div/div[1]/div/div[1]/div[2]/div/div[2]/div[1]/div/span')
+    select.click()
     # press('enter')
     # time.sleep(2)
     # tools.waitLoadingPageByXPATH2(10, '/html/body/div[6]/div/div/div/div[1]/div/div[1]/div[2]/div[2]/div[2]/div[81]/div/span')  
