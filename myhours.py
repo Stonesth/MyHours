@@ -126,6 +126,8 @@ def modifyTrack(jira, description, epic_link) :
     projectInput.send_keys(epic_link)
 
     # Select the Project
+    time.sleep(1)
+    projectInput.click()
     projectInput.send_keys(Keys.TAB)
 
 
