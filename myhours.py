@@ -174,8 +174,8 @@ def modifyTrack(jira, description, epic_link) :
     logAddEditDescription.send_keys(description)
     
     # editLog
-    tools.waitLoadingPageByID2(dealy_properties, 'addTimeLogButton')
-    editLog = tools.driver.find_element_by_id('addTimeLogButton')
+    tools.waitLoadingPageByID2(dealy_properties, 'saveTimeLogBtn')
+    editLog = tools.driver.find_element_by_id('saveTimeLogBtn')
     editLog.click()
 
 def modifyTrack_1(jira, description, epic_link) :
