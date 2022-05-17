@@ -145,8 +145,8 @@ def modifyTrack(jira, description, epic_link) :
     time.sleep(2)
 
     # Task
-    tools.waitLoadingPageByID2(dealy_properties, 'trackPageAddFormTask')
-    taskLookup = tools.driver.find_element_by_id('trackPageAddFormTask')
+    tools.waitLoadingPageByID2(dealy_properties, 'trackPageEditFormTask')
+    taskLookup = tools.driver.find_element_by_id('trackPageEditFormTask')
     taskLookup.click()
 
     time.sleep(1)
@@ -158,8 +158,8 @@ def modifyTrack(jira, description, epic_link) :
     projectInput.send_keys(Keys.ENTER)
     
     # TAG
-    tools.waitLoadingPageByID2(dealy_properties, 'tagSelect')
-    tagLookup = tools.driver.find_element_by_id('tagSelect')
+    tools.waitLoadingPageByID2(dealy_properties, 'logFormEditLogTagsInput')
+    tagLookup = tools.driver.find_element_by_id('logFormEditLogTagsInput')
     tagLookup.click()
 
     tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="logFormEditLogTagsInput"]/div[1]/div/div[1]/input')  
