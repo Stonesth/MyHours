@@ -115,14 +115,14 @@ def startTrackWithDescription_1(jira, description, epic_link) :
 
 def modifyTrack(jira, description, epic_link) :
     # Project
-    tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="projectInputId"]/div/div[1]/div/div/div/div/div[1]/input')
-    projectLookup = tools.driver.find_element_by_xpath('//*[@id="projectInputId"]/div/div[1]/div/div/div/div/div[1]/input')
+    tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="logFormEditLogProjectInput"]/div/div[1]/div/div/div/div/div[1]/input')
+    projectLookup = tools.driver.find_element_by_xpath('//*[@id="logFormEditLogProjectInput"]/div/div[1]/div/div/div/div/div[1]/input')
     time.sleep(1)
     projectLookup.click()
                                                      
-    tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="projectInputId"]/div[1]/div[1]/div/div/div/div/div[1]/input')  
+    tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="logFormEditLogProjectInput"]/div[1]/div[1]/div/div/div/div/div[1]/input')  
     time.sleep(2)
-    projectInput = tools.driver.find_element_by_xpath('//*[@id="projectInputId"]/div[1]/div[1]/div/div/div/div/div[1]/input')
+    projectInput = tools.driver.find_element_by_xpath('//*[@id="logFormEditLogProjectInput"]/div[1]/div[1]/div/div/div/div/div[1]/input')
     projectInput.send_keys(epic_link)
 
     # Select the Project
