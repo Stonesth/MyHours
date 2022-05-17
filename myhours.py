@@ -150,9 +150,9 @@ def modifyTrack(jira, description, epic_link) :
     taskLookup.click()
 
     time.sleep(1)
-                                                     
-    tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="trackPageAddFormTask"]/div[1]/div[1]/div/div/div/div/div[1]/input')
-    projectInput = tools.driver.find_element_by_xpath('//*[@id="trackPageAddFormTask"]/div[1]/div[1]/div/div/div/div/div[1]/input')
+    
+    tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="trackPageEditFormTask"]/div[1]/div[1]/div/div/div/div/div[1]/input')
+    projectInput = tools.driver.find_element_by_xpath('//*[@id="trackPageEditFormTask"]/div[1]/div[1]/div/div/div/div/div[1]/input')
     projectInput.send_keys('JIRA')
     time.sleep(1) # To fast if not present
     projectInput.send_keys(Keys.ENTER)
