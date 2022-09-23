@@ -181,7 +181,7 @@ def modifyTrack(jira, description, epic_link) :
 def modifyTrack_1(jira, description, epic_link) :
     # Edit the button
     tools.waitLoadingPageByID2(dealy_properties, 'trackPage')
-    runningEdit = tools.driver.find_element_by_xpath('//*[@id="trackPage"]/div[6]/div/div[2]/div/log-display/div/div[1]/div/div[1]/log-details-display/div/div[1]')
+    runningEdit = tools.driver.find_element_by_xpath('//*[@id="trackPage"]/div[5]/div/div[2]/div/log-display/div/div[1]/div/div[1]/log-details-display/div/div[1]')
     runningEdit.click()
 
     # Project
