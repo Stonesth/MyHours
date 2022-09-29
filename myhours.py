@@ -61,7 +61,15 @@ def startTrack() :
 
 def startTrackWithDescription(jira, description, epic_link) :
     tools.waitLoadingPageByID2(10, 'trackPage')
-    startTrack()
+    
+    # Need to check if already a track without description is started
+    
+    description_text = tools.driver.find_element_by_xpath('//*[@id="trackPage"]/div[5]/div/div[2]/div/log-display/div/div[1]/div/div[1]/div/h5/small/i')
+    print('Description = ' + description_text)
+    if (description_text.text == 'Empty description') :
+        print("Already started => don't restart a new time")
+    else :
+        startTrack()
 
     time.sleep(2)
     # Click on the current run
