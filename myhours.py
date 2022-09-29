@@ -65,8 +65,14 @@ def startTrackWithDescription(jira, description, epic_link) :
 
     time.sleep(2)
     # Click on the current run
-    print ("Click on the current run")                     
-    timeStep1 = tools.driver.find_element_by_xpath('/html/body/div[1]/div/div/track-page/div/div[5]/div/div[2]')
+    print ("Click on the current run")     
+    if (tools.waitLoadingPageByXPATH2(dealy_properties, '/html/body/div[1]/div/div/track-page/div/div[5]/div/div[2]')) :
+        timeStep1 = tools.driver.find_element_by_xpath('/html/body/div[1]/div/div/track-page/div/div[5]/div/div[2]')
+    elif (tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="editLog"]')) :
+        timeStep1 = tools.driver.find_element_by_xpath('//*[@id="editLog"]')
+    else :
+        print ('ERROR')                
+    
     timeStep1.click()    
     time.sleep(2)
 
