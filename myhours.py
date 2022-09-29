@@ -73,6 +73,7 @@ def startTrackWithDescription(jira, description, epic_link) :
     else :
         print ('ERROR')                
     
+    
     timeStep1.click()    
     time.sleep(2)
 
