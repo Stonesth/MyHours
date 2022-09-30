@@ -64,10 +64,11 @@ def startTrackWithDescription(jira, description, epic_link) :
     
     time.sleep(2)
     # Need to check if already a track without description is started
-    description_text = tools.driver.find_element_by_xpath('//*[@id="trackPage"]/div[5]/div/div[2]/div/log-display/div/div[1]/div/div[1]/div/h5/small/i')
-    print('Description = ' + description_text.text)
-    if (description_text.text == 'Empty description') :
-        print("Already started => don't restart a new time")
+    if (tools.waitLoadingPageByXPATH2(10, '//*[@id="trackPage"]/div[5]/div/div[2]/div/log-display/div/div[1]/div/div[1]/div/h5/small/i')) :
+        description_text = tools.driver.find_element_by_xpath('//*[@id="trackPage"]/div[5]/div/div[2]/div/log-display/div/div[1]/div/div[1]/div/h5/small/i')
+        print('Description = ' + description_text.text)
+        if (description_text.text == 'Empty description') :
+            print("Already started => don't restart a new time")
     else :
         startTrack()
 
