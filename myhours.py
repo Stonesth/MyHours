@@ -162,7 +162,7 @@ def modifyTrack(jira, description, epic_link) :
     
     tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="trackPageEditFormTask"]/div[1]/div[1]/div/div/div/div/div[1]/input')
     projectInput = tools.driver.find_element_by_xpath('//*[@id="trackPageEditFormTask"]/div[1]/div[1]/div/div/div/div/div[1]/input')
-    projectInput.send_keys('JIRA')
+    projectInput.send_keys(jira)
     time.sleep(1) # To fast if not present
     projectInput.send_keys(Keys.ENTER)
     
@@ -173,7 +173,7 @@ def modifyTrack(jira, description, epic_link) :
 
     tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="logFormEditLogTagsInput"]/div[1]/div/div[1]/input')  
     tagInput = tools.driver.find_element_by_xpath('//*[@id="logFormEditLogTagsInput"]/div[1]/div/div[1]/input')
-    tagInput.send_keys(jira)
+    tagInput.send_keys('JIRA')
     time.sleep(2)
     tagInput.send_keys(Keys.ENTER)
 
