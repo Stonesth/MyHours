@@ -352,7 +352,7 @@ def modifyGroupTrack(jira, description, epic_link) :
 
 # # For testing purposec
 # # Open Browser
-tools.openBrowserChrome()
-connectToMyHours()
-enterCredentials()
-startTrackWithDescription('TOS-4515', 'la description', 'Run Life')
+# tools.openBrowserChrome()
+# connectToMyHours()
+# enterCredentials()
+# startTrackWithDescription('TOS-4515', 'la description', 'Run Life')
