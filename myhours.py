@@ -69,22 +69,38 @@ def startTrackWithDescription(jira, description, epic_link) :
         print('Description = ' + description_text.text)
         if (description_text.text == 'Empty description') :
             print("Already started => don't restart a new time")
+        else :
+            print("Don't have an empty description => start a new track")
+            startTrack()
     else :
         startTrack()
 
     time.sleep(2)
     # Click on the current run
-    print ("Click on the current run")                     
+    print ("Click on the current run")
     timeStep1 = tools.driver.find_element_by_xpath('/html/body/div[1]/div/div/track-page/div/div[5]/div/div[2]')
-    timeStep1.click()    
-    time.sleep(2)
-
-    # Do the modification of the track
-    print ("Do the modification of the track")     
-    modifyTrack(jira, description, epic_link)
+    timeStep1.click()
     
+    print ("Try to overide the class and removed the string hover-child")
+    if (tools.waitLoadingPageByXPATH2(10, '/html/body/div[1]/div/div/track-page/div/div[5]/div/div[2]/div[1]/log-display/div/div[1]/div/div[1]/log-details-display/div/div[2]/a[1]')) :
+        tools.driver.execute_script("arguments[0].setAttribute('class', 'mr-3 small ng-scope')", tools.driver.find_element_by_xpath('/html/body/div[1]/div/div/track-page/div/div[5]/div/div[2]/div[1]/log-display/div/div[1]/div/div[1]/log-details-display/div/div[2]/a[1][@class="hover-child mr-3 small ng-scope"]'))
+        time.sleep(2)
+
+    if (tools.waitLoadingPageByXPATH2(10, '//*[@id="editLog"]')) :
+        timeStep1 = tools.driver.find_element_by_xpath('//*[@id="editLog"]')
+        timeStep1.click()   
+        time.sleep(2)
+        # Do the modification of the track
+        print ("Do the modification of the track")
+        modifyGroupTrack(jira, description, epic_link)
+    else :
+        time.sleep(2)
+        # Do the modification of the track
+        print ("Do the modification of the track")
+        modifyTrack(jira, description, epic_link)
+        
     # To let the time to refresh the page
-    time.sleep(2)
+    time.sleep(2)    
 
 def startTrackWithDescription_1(jira, description, epic_link) :
     tools.waitLoadingPageByID2(10, 'timeStep1')
@@ -278,3 +294,63 @@ def modifyTrack_1(jira, description, epic_link) :
     tools.waitLoadingPageByID2(dealy_properties, 'editLog')
     editLog = tools.driver.find_element_by_id('editLog')
     editLog.click()
+
+def modifyGroupTrack(jira, description, epic_link) :
+    # Project
+    tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="projectInputId"]/div/div[1]/div/div/div/div/div[1]/input')
+    projectLookup = tools.driver.find_element_by_xpath('//*[@id="projectInputId"]/div/div[1]/div/div/div/div/div[1]/input')
+    time.sleep(1)
+    projectLookup.click()
+                                                     
+    tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="projectInputId"]/div[1]/div[1]/div/div/div/div/div[1]/input')  
+    time.sleep(2)
+    projectInput = tools.driver.find_element_by_xpath('//*[@id="projectInputId"]/div[1]/div[1]/div/div/div/div/div[1]/input')
+    projectInput.send_keys(epic_link)
+
+    # Select the Project
+    time.sleep(1)
+    projectInput.click()
+    projectInput.send_keys(Keys.ENTER)    
+    time.sleep(2)
+
+    # Task
+    tools.waitLoadingPageByID2(dealy_properties, 'editLogTask')
+    taskLookup = tools.driver.find_element_by_id('editLogTask')
+    taskLookup.click()
+
+    time.sleep(1)
+    
+    tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="editLogTask"]/div[1]/div[1]/div/div/div/div/div[1]/input')
+    projectInput = tools.driver.find_element_by_xpath('//*[@id="editLogTask"]/div[1]/div[1]/div/div/div/div/div[1]/input')
+    projectInput.send_keys(jira)
+    time.sleep(1) # To fast if not present
+    projectInput.send_keys(Keys.ENTER)
+    
+    # TAG
+    tools.waitLoadingPageByID2(dealy_properties, 'tagSelect')
+    tagLookup = tools.driver.find_element_by_id('tagSelect')
+    tagLookup.click()
+
+    tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="tagSelect"]/div[1]/div/div[1]/input')  
+    tagInput = tools.driver.find_element_by_xpath('//*[@id="tagSelect"]/div[1]/div/div[1]/input')
+    tagInput.send_keys('JIRA')
+    time.sleep(2)
+    tagInput.send_keys(Keys.ENTER)
+
+    # Description
+    tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="editor"]/div[1]')
+    logAddEditDescription = tools.driver.find_element_by_xpath('//*[@id="editor"]/div[1]')
+    logAddEditDescription.click()
+    logAddEditDescription.send_keys(description)
+    
+    # editLog
+    tools.waitLoadingPageByID2(dealy_properties, 'editLogSaveButton')
+    editLog = tools.driver.find_element_by_id('editLogSaveButton')
+    editLog.click()
+
+# For testing purposec
+# Open Browser
+tools.openBrowserChrome()
+connectToMyHours()
+enterCredentials()
+startTrackWithDescription('TOS-4515', 'la description', 'Run Life')
