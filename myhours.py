@@ -82,7 +82,7 @@ def startTrackWithDescription(jira, description, epic_link) :
     timeStep1.click()
     
     # If we see the "Edit time log", we are already on the edit of the time
-    if (tools.waitLoadingPageByXPATH2(10, '//*[@id="logFormWrapper"]/form/div/div[1]/h4')) :
+    if (tools.waitLoadingPageByXPATH2(10, '//*[@id="logFormEditLogProjectInput"]/div/div[1]/div/div/div/div/div[1]/input')) :
         time.sleep(2)
         # Do the modification of the track
         print ("Do the modification of the track")
@@ -352,7 +352,7 @@ def modifyGroupTrack(jira, description, epic_link) :
 
 # # For testing purposec
 # # Open Browser
-# tools.openBrowserChrome()
-# connectToMyHours()
-# enterCredentials()
-# startTrackWithDescription('TOS-4515', 'la description', 'Run Life')
+tools.openBrowserChrome()
+connectToMyHours()
+enterCredentials()
+startTrackWithDescription('TOS-4515', 'la description', 'Run Life')
