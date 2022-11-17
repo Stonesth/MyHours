@@ -81,23 +81,25 @@ def startTrackWithDescription(jira, description, epic_link) :
     timeStep1 = tools.driver.find_element_by_xpath('/html/body/div[1]/div/div/track-page/div/div[5]/div/div[2]')
     timeStep1.click()
     
-    print ("Try to overide the class and removed the string hover-child")
-    if (tools.waitLoadingPageByXPATH2(10, '/html/body/div[1]/div/div/track-page/div/div[5]/div/div[2]/div[1]/log-display/div/div[1]/div/div[1]/log-details-display/div/div[2]/a[1]')) :
-        tools.driver.execute_script("arguments[0].setAttribute('class', 'mr-3 small ng-scope')", tools.driver.find_element_by_xpath('/html/body/div[1]/div/div/track-page/div/div[5]/div/div[2]/div[1]/log-display/div/div[1]/div/div[1]/log-details-display/div/div[2]/a[1][@class="hover-child mr-3 small ng-scope"]'))
-        time.sleep(2)
-
-    if (tools.waitLoadingPageByXPATH2(10, '//*[@id="editLog"]')) :
-        timeStep1 = tools.driver.find_element_by_xpath('//*[@id="editLog"]')
-        timeStep1.click()   
-        time.sleep(2)
-        # Do the modification of the track
-        print ("Do the modification of the track")
-        modifyGroupTrack(jira, description, epic_link)
-    else :
+    # If we see the "Edit time log", we are already on the edit of the time
+    if (tools.waitLoadingPageByXPATH2(10, '//*[@id="logFormWrapper"]/form/div/div[1]/h4')) :
         time.sleep(2)
         # Do the modification of the track
         print ("Do the modification of the track")
         modifyTrack(jira, description, epic_link)
+    else :
+        print ("Try to overide the class and removed the string hover-child")
+        if (tools.waitLoadingPageByXPATH2(10, '/html/body/div[1]/div/div/track-page/div/div[5]/div/div[2]/div[1]/log-display/div/div[1]/div/div[1]/log-details-display/div/div[2]/a[1]')) :
+            tools.driver.execute_script("arguments[0].setAttribute('class', 'mr-3 small ng-scope')", tools.driver.find_element_by_xpath('/html/body/div[1]/div/div/track-page/div/div[5]/div/div[2]/div[1]/log-display/div/div[1]/div/div[1]/log-details-display/div/div[2]/a[1][@class="hover-child mr-3 small ng-scope"]'))
+            time.sleep(2)
+
+        if (tools.waitLoadingPageByXPATH2(10, '//*[@id="editLog"]')) :
+            timeStep1 = tools.driver.find_element_by_xpath('//*[@id="editLog"]')
+            timeStep1.click()   
+            time.sleep(2)
+            # Do the modification of the track
+            print ("Do the modification of the track")
+            modifyGroupTrack(jira, description, epic_link)
         
     # To let the time to refresh the page
     time.sleep(2)    
@@ -348,9 +350,9 @@ def modifyGroupTrack(jira, description, epic_link) :
     editLog = tools.driver.find_element_by_id('editLogSaveButton')
     editLog.click()
 
-# For testing purposec
-# Open Browser
-tools.openBrowserChrome()
-connectToMyHours()
-enterCredentials()
-startTrackWithDescription('TOS-4515', 'la description', 'Run Life')
+# # For testing purposec
+# # Open Browser
+# tools.openBrowserChrome()
+# connectToMyHours()
+# enterCredentials()
+# startTrackWithDescription('TOS-4515', 'la description', 'Run Life')
