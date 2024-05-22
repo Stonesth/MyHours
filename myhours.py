@@ -86,7 +86,7 @@ def startTrackWithDescription(jira, description, epic_link) :
     timeStep1.click()
     
     # If we see the "Edit time log", we are already on the edit of the time
-    tools.waitLoadingPageByXPATH2(10, '//*[@id="logBulkEditFormWrapper"]/form/div[1]/div/h5')
+    tools.waitLoadingPageByXPATH2(10, '//*[@id="logBulkEditFormWrapper"]')
     # Do the modification of the track
     print ("Do the modification of the track")
     modifyTrack(jira, description, epic_link)
@@ -193,8 +193,8 @@ def modifyTrack(jira, description, epic_link) :
     projectInput.send_keys(Keys.ENTER)
     
     # TAG
-    tools.waitLoadingPageByID2(dealy_properties, 'logFormEditLogTagsInput')
-    tagLookup = tools.driver.find_element(By.ID, 'logFormEditLogTagsInput')
+    tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="logFormEditLogTagsInput"]/dx-tag-box/div[1]/div[1]/div/div/dx-text-box/div/div[1]')
+    tagLookup = tools.driver.find_element(By.XPATH, '//*[@id="logFormEditLogTagsInput"]/dx-tag-box/div[1]/div[1]/div/div/dx-text-box/div/div[1]')
     tagLookup.click()
 
     tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="logFormEditLogTagsInput"]/dx-tag-box/div[1]/div[1]/div/div/dx-text-box/div/div[1]/input')  
