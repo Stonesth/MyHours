@@ -61,12 +61,12 @@ def startTrack() :
         timeStep1.click()
 
 def startTrackWithDescription(jira, description, epic_link) :
-    tools.waitLoadingPageByXPATH2(10, '//*[@id="trackPage"]/div[5]/div/div[2]/div')
+    tools.waitLoadingPageByXPATH2(10, '/html/body/mh-root/div/div/mh-large-layout/div/ng-component/mh-track-navigation-bar/div/div[1]') # change since the 22-05-2024 : timeStep1
     
     time.sleep(2)
     # Need to check if already a track without description is started
-    if (tools.waitLoadingPageByXPATH2(10, '//*[@id="trackPage"]/div[5]/div/div[2]/div/log-display/div/div[1]/div/div[1]/div/h5/small/i')) :
-        description_text = tools.driver.find_element(By.XPATH, '//*[@id="trackPage"]/div[5]/div/div[2]/div/log-display/div/div[1]/div/div[1]/div/h5/small/i')
+    if (tools.waitLoadingPageByXPATH2(10, '/html/body/mh-root/div/div/mh-large-layout/div/ng-component/mh-log-list/div/mh-log-item[1]/div/div/div/div[1]/div/div[1]/mh-log-item-details/div/div/i')) :
+        description_text = tools.driver.find_element(By.XPATH, '/html/body/mh-root/div/div/mh-large-layout/div/ng-component/mh-log-list/div/mh-log-item[1]/div/div/div/div[1]/div/div[1]/mh-log-item-details/div/div/i')
         print('Description = ' + description_text.text)
         if (description_text.text == 'Empty description') :
             print("Already started => don't restart a new time")
