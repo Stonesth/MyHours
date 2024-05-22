@@ -149,6 +149,7 @@ def startTrackWithDescription_1(jira, description, epic_link) :
     time.sleep(2)
 
 def modifyTrack(jira, description, epic_link) :
+    print ("Select the project")
     # Project
     tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="logFormEditLogProjectInput"]/mh-select-box-toolbar-actions/dx-select-box/div/div[1]/div/div/div/dx-text-box/div/div[1]/input')
     projectLookup = tools.driver.find_element(By.XPATH, '//*[@id="logFormEditLogProjectInput"]/mh-select-box-toolbar-actions/dx-select-box/div/div[1]/div/div/div/dx-text-box/div/div[1]/input')
@@ -183,10 +184,12 @@ def modifyTrack(jira, description, epic_link) :
     
     time.sleep(2)
 
+    print ("Select the task")
     # Task
-    tools.waitLoadingPageByID2(dealy_properties, 'trackPageEditFormTask')
-    taskLookup = tools.driver.find_element(By.ID, 'trackPageEditFormTask')
+    tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="trackPageEditFormTask"]/mh-select-box-toolbar-actions/dx-select-box/div[1]/div[1]/div/div/div/dx-text-box/div/div/input')
+    taskLookup = tools.driver.find_element(By.XPATH, '//*[@id="trackPageEditFormTask"]/mh-select-box-toolbar-actions/dx-select-box/div[1]/div[1]/div/div/div/dx-text-box/div/div/input')
     taskLookup.click()
+    taskLookup.send_keys(Keys.ENTER)
 
     time.sleep(1)
     
@@ -196,6 +199,7 @@ def modifyTrack(jira, description, epic_link) :
     time.sleep(1) # To fast if not present
     projectInput.send_keys(Keys.ENTER)
     
+    print ("Select the TAG")
     # TAG
     tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="logFormEditLogTagsInput"]/dx-tag-box/div[1]/div[1]/div/div/dx-text-box/div/div[1]')
     tagLookup = tools.driver.find_element(By.XPATH, '//*[@id="logFormEditLogTagsInput"]/dx-tag-box/div[1]/div[1]/div/div/dx-text-box/div/div[1]')
