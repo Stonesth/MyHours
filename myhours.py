@@ -63,7 +63,7 @@ def startTrack() :
         timeStep1.click()
 
 def startTrackWithDescription(jira, description, epic_link) :
-    tools.waitLoadingPageByXPATH2(10, '/html/body/mh-root/div/div/mh-large-layout/div/ng-component/mh-track-navigation-bar/div/div[1]') # change since the 22-05-2024 : timeStep1
+    tools.waitLoadingPageByXPATH2(20, '/html/body/mh-root/div/div/mh-large-layout/div/ng-component/mh-track-navigation-bar/div/div[1]') # change since the 22-05-2024 : timeStep1
     
     time.sleep(2)
     # Need to check if already a track without description is started
