@@ -160,7 +160,9 @@ def modifyTrack(jira, description, epic_link) :
     time.sleep(2)
     projectInput = tools.driver.find_element(By.XPATH, '//*[@id="logFormEditLogProjectInput"]/mh-select-box-toolbar-actions/dx-select-box/div[1]/div[1]/div/div/div/dx-text-box/div/div[1]/input')
     projectInput.send_keys(epic_link)
+    time.sleep(1)
     projectInput.send_keys(Keys.ENTER)
+    time.sleep(1)
 
     # Select the Project
     # time.sleep(1)
@@ -189,7 +191,6 @@ def modifyTrack(jira, description, epic_link) :
     tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="trackPageEditFormTask"]/mh-select-box-toolbar-actions/dx-select-box/div[1]/div[1]/div/div/div/dx-text-box/div/div/input')
     taskLookup = tools.driver.find_element(By.XPATH, '//*[@id="trackPageEditFormTask"]/mh-select-box-toolbar-actions/dx-select-box/div[1]/div[1]/div/div/div/dx-text-box/div/div/input')
     taskLookup.click()
-    taskLookup.send_keys(Keys.ENTER)
 
     time.sleep(1)
     
