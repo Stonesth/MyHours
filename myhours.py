@@ -25,12 +25,12 @@ def connectToMyHours() :
     tools.driver.get('https://app.myhours.com')
 
 def enterCredentials() :
-    tools.waitLoadingPageByID2(dealy_properties, 'email')
-    username = tools.driver.find_element(By.ID, "email")
+    tools.waitLoadingPageByID2(dealy_properties, 'username-field') # change since the 22-05-2024 : email
+    username = tools.driver.find_element(By.ID, "username-field") # change since the 22-05-2024 : email
     username.send_keys(user_text)
 
-    tools.waitLoadingPageByID2(dealy_properties, 'password')
-    password = tools.driver.find_element(By.ID, "password")
+    tools.waitLoadingPageByID2(dealy_properties, 'password-field') # change since the 22-05-2024 : password
+    password = tools.driver.find_element(By.ID, "password-field") # change since the 22-05-2024 : password
     password.send_keys(password_text)
     password.send_keys(Keys.ENTER)
 
