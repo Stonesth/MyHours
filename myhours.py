@@ -43,7 +43,7 @@ def startTrack() :
         print ("Stop the chrono")
         time.sleep(1)
         tools.waitLoadingPageByID2(dealy_properties, 'stopWorkButton')
-        stopTimeStep1 = tools.driver.find_element(By.ID, 'stopWorkButton')
+        stopTimeStep1 = tools.driver.find_element(By.XPATH, '//*[@id="stopWorkButton"]/button') # change since the 22-05-2024 : stopTimeStep1
         stopTimeStep1.click()
         time.sleep(1)
     except NoSuchElementException:
@@ -51,13 +51,15 @@ def startTrack() :
 
     try:
         tools.waitLoadingPageByID2(dealy_properties, 'startButton')
-        timeStep1 = tools.driver.find_element(By.ID, 'startButton')
+        timeStep1 = tools.driver.find_element(By.XPATH, '//*[@id="startButton"]/button') # change since the 22-05-2024 : timeStep1
         timeStep1.click()
         print ("Started a new activity")
     except TimeoutException:
         print ("Clock already started - start new activity")
-        tools.waitLoadingPageByID2(dealy_properties, 'startNewButton')
-        timeStep1 = tools.driver.find_element(By.ID, 'startNewButton')
+        tools.waitLoadingPageByID2(dealy_properties, 'startButton')
+        timeStep1 = tools.driver.find_element(By.XPATH, '//*[@id="startButton"]/button') # change since the 22-05-2024 : timeStep1
+        # tools.waitLoadingPageByID2(dealy_properties, 'startNewButton') # change since the 22-05-2024 : timeStep1
+        # timeStep1 = tools.driver.find_element(By.ID, 'startNewButton') # change since the 22-05-2024 : timeStep1
         timeStep1.click()
 
 def startTrackWithDescription(jira, description, epic_link) :
@@ -68,7 +70,7 @@ def startTrackWithDescription(jira, description, epic_link) :
     if (tools.waitLoadingPageByXPATH2(10, '/html/body/mh-root/div/div/mh-large-layout/div/ng-component/mh-log-list/div/mh-log-item[1]/div/div/div/div[1]/div/div[1]/mh-log-item-details/div/div/i')) :
         description_text = tools.driver.find_element(By.XPATH, '/html/body/mh-root/div/div/mh-large-layout/div/ng-component/mh-log-list/div/mh-log-item[1]/div/div/div/div[1]/div/div[1]/mh-log-item-details/div/div/i')
         print('Description = ' + description_text.text)
-        if (description_text.text == 'Empty description') :
+        if (description_text.text == 'Add project, task, and other details') :
             print("Already started => don't restart a new time")
         else :
             print("Don't have an empty description => start a new track")
