@@ -86,7 +86,7 @@ def startTrackWithDescription(jira, description, epic_link) :
     timeStep1.click()
     
     # If we see the "Edit time log", we are already on the edit of the time
-    tools.waitLoadingPageByXPATH2(10, '//*[@id="logBulkEditFormWrapper"]')
+    # tools.waitLoadingPageByXPATH2(10, '//*[@id="logBulkEditFormWrapper"]')
     # Do the modification of the track
     print ("Do the modification of the track")
     modifyTrack(jira, description, epic_link)
@@ -161,9 +161,12 @@ def modifyTrack(jira, description, epic_link) :
     projectInput.send_keys(epic_link)
 
     # Select the Project
+    # time.sleep(1)
+    # projectInput.click()
+    # projectInput.send_keys(Keys.ENTER)
+    projectLookup = tools.driver.find_element(By.XPATH, '//*[@id="dx-749e2eab-1d22-eb01-c6de-6d3080f5fdc3"]/div[1]/div/div[1]/div[2]/div[1]/div[2]/div[1]')
     time.sleep(1)
-    projectInput.click()
-    projectInput.send_keys(Keys.ENTER)
+    projectLookup.click()
 
 
     # time.sleep(1)
