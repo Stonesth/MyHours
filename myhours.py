@@ -86,24 +86,29 @@ def startTrackWithDescription(jira, description, epic_link) :
     timeStep1.click()
     
     # If we see the "Edit time log", we are already on the edit of the time
-    if (tools.waitLoadingPageByXPATH2(10, '//*[@id="logFormEditLogProjectInput"]/div/div[1]/div/div/div/div/div[1]/input')) :
-        time.sleep(2)
-        # Do the modification of the track
-        print ("Do the modification of the track")
-        modifyTrack(jira, description, epic_link)
-    else :
-        print ("Try to overide the class and removed the string hover-child")
-        # if (tools.waitLoadingPageByXPATH2(10, '/html/body/div[1]/div/div/track-page/div/div[5]/div/div[2]/div[1]/log-display/div/div[1]/div/div[1]/log-details-display/div/div[2]/a[1]')) :
-        #     tools.driver.execute_script("arguments[0].setAttribute('class', 'mr-3 small ng-scope')", tools.driver.find_element(By.XPATH, '/html/body/div[1]/div/div/track-page/div/div[5]/div/div[2]/div[1]/log-display/div/div[1]/div/div[1]/log-details-display/div/div[2]/a[1][@class="hover-child mr-3 small ng-scope"]'))
-        #     time.sleep(2)
+    tools.waitLoadingPageByXPATH2(10, '//*[@id="logBulkEditFormWrapper"]/form/div[1]/div/h5')
+    time.sleep(2)
+    # Do the modification of the track
+    print ("Do the modification of the track")
+    modifyTrack(jira, description, epic_link)
+    # if (tools.waitLoadingPageByXPATH2(10, '//*[@id="logBulkEditFormWrapper"]/form/div[1]/div/h5')) :
+    #     time.sleep(2)
+    #     # Do the modification of the track
+    #     print ("Do the modification of the track")
+    #     modifyTrack(jira, description, epic_link)
+    # else :
+    #     print ("Try to overide the class and removed the string hover-child")
+    #     # if (tools.waitLoadingPageByXPATH2(10, '/html/body/div[1]/div/div/track-page/div/div[5]/div/div[2]/div[1]/log-display/div/div[1]/div/div[1]/log-details-display/div/div[2]/a[1]')) :
+    #     #     tools.driver.execute_script("arguments[0].setAttribute('class', 'mr-3 small ng-scope')", tools.driver.find_element(By.XPATH, '/html/body/div[1]/div/div/track-page/div/div[5]/div/div[2]/div[1]/log-display/div/div[1]/div/div[1]/log-details-display/div/div[2]/a[1][@class="hover-child mr-3 small ng-scope"]'))
+    #     #     time.sleep(2)
 
-        if (tools.waitLoadingPageByXPATH2(10, '//*[@id="logBulkEditFormWrapper"]')) : # change since the 22-05-2024
-            timeStep1 = tools.driver.find_element(By.XPATH, '//*[@id="logBulkEditFormWrapper"]') # change since the 22-05-2024
-            timeStep1.click()   
-            time.sleep(2)
-            # Do the modification of the track
-            print ("Do the modification of the track")
-            modifyGroupTrack(jira, description, epic_link)
+    #     if (tools.waitLoadingPageByXPATH2(10, '//*[@id="logBulkEditFormWrapper"]')) : # change since the 22-05-2024
+    #         timeStep1 = tools.driver.find_element(By.XPATH, '//*[@id="logBulkEditFormWrapper"]') # change since the 22-05-2024
+    #         timeStep1.click()   
+    #         time.sleep(2)
+    #         # Do the modification of the track
+    #         print ("Do the modification of the track")
+    #         modifyGroupTrack(jira, description, epic_link)
         
     # To let the time to refresh the page
     time.sleep(2)    
