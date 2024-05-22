@@ -161,7 +161,7 @@ def modifyTrack(jira, description, epic_link) :
         time.sleep(2)
         projectInput = tools.driver.find_element(By.XPATH, '//*[@id="logBulkEditFormWrapper"]/form/div[3]/div/div/mh-project-select/mh-select-box-toolbar-actions/dx-select-box/div[1]/div[1]/div/div/div/dx-text-box/div/div[1]/input')
         projectInput.send_keys(epic_link)
-        time.sleep(1)
+        time.sleep(2)
         projectInput.send_keys(Keys.ENTER)
         time.sleep(1)
     else :
