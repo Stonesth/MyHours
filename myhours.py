@@ -87,7 +87,6 @@ def startTrackWithDescription(jira, description, epic_link) :
     
     # If we see the "Edit time log", we are already on the edit of the time
     tools.waitLoadingPageByXPATH2(10, '//*[@id="logBulkEditFormWrapper"]/form/div[1]/div/h5')
-    time.sleep(2)
     # Do the modification of the track
     print ("Do the modification of the track")
     modifyTrack(jira, description, epic_link)
@@ -151,14 +150,14 @@ def startTrackWithDescription_1(jira, description, epic_link) :
 
 def modifyTrack(jira, description, epic_link) :
     # Project
-    tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="logFormEditLogProjectInput"]/div/div[1]/div/div/div/div/div[1]/input')
-    projectLookup = tools.driver.find_element(By.XPATH, '//*[@id="logFormEditLogProjectInput"]/div/div[1]/div/div/div/div/div[1]/input')
+    tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="logFormEditLogProjectInput"]/mh-select-box-toolbar-actions/dx-select-box/div/div[1]/div/div/div/dx-text-box/div/div[1]/input')
+    projectLookup = tools.driver.find_element(By.XPATH, '//*[@id="logFormEditLogProjectInput"]/mh-select-box-toolbar-actions/dx-select-box/div/div[1]/div/div/div/dx-text-box/div/div[1]/input')
     time.sleep(1)
     projectLookup.click()
-                                                     
-    tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="logFormEditLogProjectInput"]/div[1]/div[1]/div/div/div/div/div[1]/input')  
+                                                   
+    tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="logFormEditLogProjectInput"]/mh-select-box-toolbar-actions/dx-select-box/div[1]/div[1]/div/div/div/dx-text-box/div/div[1]/input')  
     time.sleep(2)
-    projectInput = tools.driver.find_element(By.XPATH, '//*[@id="logFormEditLogProjectInput"]/div[1]/div[1]/div/div/div/div/div[1]/input')
+    projectInput = tools.driver.find_element(By.XPATH, '//*[@id="logFormEditLogProjectInput"]/mh-select-box-toolbar-actions/dx-select-box/div[1]/div[1]/div/div/div/dx-text-box/div/div[1]/input')
     projectInput.send_keys(epic_link)
 
     # Select the Project
@@ -187,8 +186,8 @@ def modifyTrack(jira, description, epic_link) :
 
     time.sleep(1)
     
-    tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="trackPageEditFormTask"]/div[1]/div[1]/div/div/div/div/div[1]/input')
-    projectInput = tools.driver.find_element(By.XPATH, '//*[@id="trackPageEditFormTask"]/div[1]/div[1]/div/div/div/div/div[1]/input')
+    tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="trackPageEditFormTask"]/mh-select-box-toolbar-actions/dx-select-box/div[1]/div[1]/div/div/div/dx-text-box/div/div[1]/input')
+    projectInput = tools.driver.find_element(By.XPATH, '//*[@id="trackPageEditFormTask"]/mh-select-box-toolbar-actions/dx-select-box/div[1]/div[1]/div/div/div/dx-text-box/div/div[1]/input')
     projectInput.send_keys(jira)
     time.sleep(1) # To fast if not present
     projectInput.send_keys(Keys.ENTER)
@@ -198,15 +197,15 @@ def modifyTrack(jira, description, epic_link) :
     tagLookup = tools.driver.find_element(By.ID, 'logFormEditLogTagsInput')
     tagLookup.click()
 
-    tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="logFormEditLogTagsInput"]/div[1]/div/div[1]/input')  
-    tagInput = tools.driver.find_element(By.XPATH, '//*[@id="logFormEditLogTagsInput"]/div[1]/div/div[1]/input')
+    tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="logFormEditLogTagsInput"]/dx-tag-box/div[1]/div[1]/div/div/dx-text-box/div/div[1]/input')  
+    tagInput = tools.driver.find_element(By.XPATH, '//*[@id="logFormEditLogTagsInput"]/dx-tag-box/div[1]/div[1]/div/div/dx-text-box/div/div[1]/input')
     tagInput.send_keys('JIRA')
     time.sleep(2)
     tagInput.send_keys(Keys.ENTER)
 
     # Description
-    tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="editor"]/div[1]')
-    logAddEditDescription = tools.driver.find_element(By.XPATH, '//*[@id="editor"]/div[1]')
+    tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="logFormEditLogNoteInput"]')
+    logAddEditDescription = tools.driver.find_element(By.XPATH, '//*[@id="logFormEditLogNoteInput"]')
     logAddEditDescription.send_keys(description)
     
     # editLog
