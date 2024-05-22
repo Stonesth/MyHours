@@ -86,7 +86,7 @@ def startTrackWithDescription(jira, description, epic_link) :
     timeStep1.click()
     
     # If we see the "Edit time log", we are already on the edit of the time
-    # tools.waitLoadingPageByXPATH2(10, '//*[@id="logBulkEditFormWrapper"]')
+    tools.waitLoadingPageByXPATH2(10, '//*[@id="logBulkEditFormWrapper"]')
     # Do the modification of the track
     print ("Do the modification of the track")
     modifyTrack(jira, description, epic_link)
