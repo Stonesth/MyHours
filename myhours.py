@@ -42,7 +42,7 @@ def startTrack() :
     try :
         print ("Stop the chrono")
         time.sleep(1)
-        tools.waitLoadingPageXPATH2(dealy_properties, '//*[@id="stopWorkButton"]/button')
+        tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="stopWorkButton"]/button')
         stopTimeStep1 = tools.driver.find_element(By.XPATH, '//*[@id="stopWorkButton"]/button') # change since the 22-05-2024 : stopTimeStep1
         stopTimeStep1.click()
         time.sleep(1)
@@ -50,13 +50,13 @@ def startTrack() :
         print ("Not possible to stop. because already stopped")
 
     try:
-        tools.waitLoadingPageXPATH2(dealy_properties, '//*[@id="startButton"]/button')
+        tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="startButton"]/button')
         timeStep1 = tools.driver.find_element(By.XPATH, '//*[@id="startButton"]/button') # change since the 22-05-2024 : timeStep1
         timeStep1.click()
         print ("Started a new activity")
     except TimeoutException:
         print ("Clock already started - start new activity")
-        tools.waitLoadingPageXPATH2(dealy_properties, '//*[@id="startButton"]/button')
+        tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="startButton"]/button')
         timeStep1 = tools.driver.find_element(By.XPATH, '//*[@id="startButton"]/button') # change since the 22-05-2024 : timeStep1
         # tools.waitLoadingPageByID2(dealy_properties, 'startNewButton') # change since the 22-05-2024 : timeStep1
         # timeStep1 = tools.driver.find_element(By.ID, 'startNewButton') # change since the 22-05-2024 : timeStep1
