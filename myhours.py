@@ -10,6 +10,7 @@ from selenium.common.exceptions import TimeoutException
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 from keyboard import press
+from selenium.webdriver.support import expected_conditions as EC
 
 # -7 for the name of this project Myhours
 save_path = dirname(__file__)[ : -7]
@@ -54,6 +55,8 @@ def startTrack() :
         time.sleep(5)
         tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="stopWorkButton"]')
         stopTimeStep1 = tools.driver.find_element(By.XPATH, '//*[@id="stopWorkButton"]') # change since the 22-05-2024 : stopTimeStep1
+        wait = tools.WebDriverWait(tools.driver, 10)  # Attendre jusqu'à 10 secondes
+        stopTimeStep1 = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="stopWorkButton"]')))
         stopTimeStep1.click()
         time.sleep(1)
     except NoSuchElementException:
