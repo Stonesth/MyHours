@@ -42,6 +42,15 @@ def startTrack() :
     try :
         print ("Stop the chrono")
         time.sleep(1)
+
+        # To avoid the problem of the button not clickable.
+        # we need to change the style visible from hidden to visible.
+        # /html/body/mh-root/div/div/mh-large-layout/div/ng-component/mh-log-list/div/mh-log-item[1]/div/div/div/div[1]/div/div[2]/mh-log-item-toolbar/div
+        tools.waitLoadingPageByXPATH2(dealy_properties, '/html/body/mh-root/div/div/mh-large-layout/div/ng-component/mh-log-list/div/mh-log-item[1]/div/div/div/div[1]/div/div[2]/mh-log-item-toolbar/div')
+        time.sleep(1)
+        stopTimeStep1 = tools.driver.find_element(By.XPATH, '/html/body/mh-root/div/div/mh-large-layout/div/ng-component/mh-log-list/div/mh-log-item[1]/div/div/div/div[1]/div/div[2]/mh-log-item-toolbar/div')
+        tools.driver.execute_script("arguments[0].setAttribute('style', 'visibility: visible;')", stopTimeStep1)
+
         tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="stopWorkButton"]')
         stopTimeStep1 = tools.driver.find_element(By.XPATH, '//*[@id="stopWorkButton"]') # change since the 22-05-2024 : stopTimeStep1
         stopTimeStep1.click()
