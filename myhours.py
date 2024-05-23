@@ -169,19 +169,7 @@ def modifyTrack(jira, description, epic_link) :
     print ("Select the project")
     # Project
     # Need to test if we are in bulk edit or not
-    if (tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="logBulkEditFormWrapper"]/form/div[3]/div/div/mh-project-select/mh-select-box-toolbar-actions/dx-select-box/div/div[1]/div/div/div/dx-text-box/div/div[1]/input')) :
-        projectLookup = tools.driver.find_element(By.XPATH, '//*[@id="logBulkEditFormWrapper"]/form/div[3]/div/div/mh-project-select/mh-select-box-toolbar-actions/dx-select-box/div/div[1]/div/div/div/dx-text-box/div/div[1]/input')
-        time.sleep(1)
-        projectLookup.click()
-                                                   
-        tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="logBulkEditFormWrapper"]/form/div[3]/div/div/mh-project-select/mh-select-box-toolbar-actions/dx-select-box/div[1]/div[1]/div/div/div/dx-text-box/div/div[1]/input')  
-        time.sleep(2)
-        projectInput = tools.driver.find_element(By.XPATH, '//*[@id="logBulkEditFormWrapper"]/form/div[3]/div/div/mh-project-select/mh-select-box-toolbar-actions/dx-select-box/div[1]/div[1]/div/div/div/dx-text-box/div/div[1]/input')
-        projectInput.send_keys(epic_link)
-        time.sleep(5)
-        projectInput.send_keys(Keys.ENTER)
-        time.sleep(1)
-    else :
+    if (tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="logFormEditLogProjectInput"]/mh-select-box-toolbar-actions/dx-select-box/div/div[1]/div/div/div/dx-text-box/div/div[1]/input')) :
         projectLookup = tools.driver.find_element(By.XPATH, '//*[@id="logFormEditLogProjectInput"]/mh-select-box-toolbar-actions/dx-select-box/div/div[1]/div/div/div/dx-text-box/div/div[1]/input')
         time.sleep(1)
         projectLookup.click()
@@ -190,9 +178,28 @@ def modifyTrack(jira, description, epic_link) :
         time.sleep(2)
         projectInput = tools.driver.find_element(By.XPATH, '//*[@id="logFormEditLogProjectInput"]/mh-select-box-toolbar-actions/dx-select-box/div[1]/div[1]/div/div/div/dx-text-box/div/div[1]/input')
         projectInput.send_keys(epic_link)
-        time.sleep(1)
+        time.sleep(5)
         projectInput.send_keys(Keys.ENTER)
         time.sleep(1)
+    else :
+        projectLookup = tools.driver.find_element(By.XPATH, '//*[@id="logBulkEditFormWrapper"]/form/div[3]/div/div/mh-project-select/mh-select-box-toolbar-actions/dx-select-box/div/div[1]/div/div/div/dx-text-box/div/div[1]/input')
+        time.sleep(1)
+        projectLookup.click()
+                                                   
+        tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="logBulkEditFormWrapper"]/form/div[3]/div/div/mh-project-select/mh-select-box-toolbar-actions/dx-select-box/div[1]/div[1]/div/div/div/dx-text-box/div/div[1]/input')  
+        time.sleep(2)
+        projectInput = tools.driver.find_element(By.XPATH, '//*[@id="logBulkEditFormWrapper"]/form/div[3]/div/div/mh-project-select/mh-select-box-toolbar-actions/dx-select-box/div[1]/div[1]/div/div/div/dx-text-box/div/div[1]/input')
+        projectInput.send_keys(epic_link)
+
+        ##########################################################
+        # For the moment there is an issue in the site of MyHours
+        # He don't recognize old project.
+        # Need to reactivate this section when the issue is fixed
+        ##########################################################
+        # time.sleep(5)
+        # projectInput.send_keys(Keys.ENTER)
+        # time.sleep(1)
+        
 
     # Select the Project
     # time.sleep(1)
@@ -220,18 +227,7 @@ def modifyTrack(jira, description, epic_link) :
     # Task
     # Need to test if we are in bulk edit or not
     taskLookup = None
-    if (tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="logBulkEditFormWrapper"]/form/div[4]/div/div/mh-project-task-select/mh-select-box-toolbar-actions/dx-select-box/div/div[1]/div/div/div/dx-text-box/div/div[1]/input')):
-        taskLookup = tools.driver.find_element(By.XPATH, '//*[@id="logBulkEditFormWrapper"]/form/div[4]/div/div/mh-project-task-select/mh-select-box-toolbar-actions/dx-select-box/div/div[1]/div/div/div/dx-text-box/div/div[1]/input')
-        taskLookup.click()
-
-        time.sleep(5)
-        
-        tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="logBulkEditFormWrapper"]/form/div[4]/div/div/mh-project-task-select/mh-select-box-toolbar-actions/dx-select-box/div[1]/div[1]/div/div/div/dx-text-box/div/div[1]/input')
-        projectInput = tools.driver.find_element(By.XPATH, '//*[@id="logBulkEditFormWrapper"]/form/div[4]/div/div/mh-project-task-select/mh-select-box-toolbar-actions/dx-select-box/div[1]/div[1]/div/div/div/dx-text-box/div/div[1]/input')
-        projectInput.send_keys(jira)
-        time.sleep(1) # To fast if not present
-        projectInput.send_keys(Keys.ENTER)
-    else :
+    if (tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="trackPageEditFormTask"]/mh-select-box-toolbar-actions/dx-select-box/div[1]/div[1]/div/div/div/dx-text-box/div/div/input')):
         taskLookup = tools.driver.find_element(By.XPATH, '//*[@id="trackPageEditFormTask"]/mh-select-box-toolbar-actions/dx-select-box/div[1]/div[1]/div/div/div/dx-text-box/div/div/input')
         taskLookup.click()
 
@@ -242,21 +238,28 @@ def modifyTrack(jira, description, epic_link) :
         projectInput.send_keys(jira)
         time.sleep(1) # To fast if not present
         projectInput.send_keys(Keys.ENTER)
+    else :
+        taskLookup = tools.driver.find_element(By.XPATH, '//*[@id="logBulkEditFormWrapper"]/form/div[4]/div/div/mh-project-task-select/mh-select-box-toolbar-actions/dx-select-box/div/div[1]/div/div/div/dx-text-box/div/div[1]/input')
+        taskLookup.click()
+
+        ##########################################################
+        # For the moment there is an issue in the site of MyHours
+        # He don't recognize old project.
+        # Need to reactivate this section when the issue is fixed
+        ##########################################################
+        # time.sleep(5)
+        
+        # tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="logBulkEditFormWrapper"]/form/div[4]/div/div/mh-project-task-select/mh-select-box-toolbar-actions/dx-select-box/div[1]/div[1]/div/div/div/dx-text-box/div/div[1]/input')
+        # projectInput = tools.driver.find_element(By.XPATH, '//*[@id="logBulkEditFormWrapper"]/form/div[4]/div/div/mh-project-task-select/mh-select-box-toolbar-actions/dx-select-box/div[1]/div[1]/div/div/div/dx-text-box/div/div[1]/input')
+        # projectInput.send_keys(jira)
+        # time.sleep(1) # To fast if not present
+        # projectInput.send_keys(Keys.ENTER)
     
     print ("Select the TAG")
     # TAG
     # Need to test if we are in bulk edit or not
     tagLookup = None
-    if (tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="logBulkEditFormWrapper"]/form/div[7]/div/mh-tags-select/dx-tag-box/div/div[1]/div/div/dx-text-box/div/div[1]/input')) :
-        tagLookup = tools.driver.find_element(By.XPATH, '//*[@id="logBulkEditFormWrapper"]/form/div[7]/div/mh-tags-select/dx-tag-box/div/div[1]/div/div/dx-text-box/div/div[1]/input')
-        tagLookup.click()
-
-        tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="logBulkEditFormWrapper"]/form/div[7]/div/mh-tags-select/dx-tag-box/div[1]/div[1]/div/div/dx-text-box/div/div[1]/input')  
-        tagInput = tools.driver.find_element(By.XPATH, '//*[@id="logBulkEditFormWrapper"]/form/div[7]/div/mh-tags-select/dx-tag-box/div[1]/div[1]/div/div/dx-text-box/div/div[1]/input')
-        tagInput.send_keys('JIRA')
-        time.sleep(2)
-        tagInput.send_keys(Keys.ENTER)
-    else :
+    if (tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="logFormEditLogTagsInput"]/dx-tag-box/div[1]/div[1]/div/div/dx-text-box/div/div[1]')) :
         tagLookup = tools.driver.find_element(By.XPATH, '//*[@id="logFormEditLogTagsInput"]/dx-tag-box/div[1]/div[1]/div/div/dx-text-box/div/div[1]')
         tagLookup.click()
 
@@ -265,6 +268,20 @@ def modifyTrack(jira, description, epic_link) :
         tagInput.send_keys('JIRA')
         time.sleep(2)
         tagInput.send_keys(Keys.ENTER)
+    else :
+        tagLookup = tools.driver.find_element(By.XPATH, '//*[@id="logBulkEditFormWrapper"]/form/div[7]/div/mh-tags-select/dx-tag-box/div/div[1]/div/div/dx-text-box/div/div[1]/input')
+        tagLookup.click()
+
+        ##########################################################
+        # For the moment there is an issue in the site of MyHours
+        # He don't recognize old project.
+        # Need to reactivate this section when the issue is fixed
+        ##########################################################
+        # tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="logBulkEditFormWrapper"]/form/div[7]/div/mh-tags-select/dx-tag-box/div[1]/div[1]/div/div/dx-text-box/div/div[1]/input')  
+        # tagInput = tools.driver.find_element(By.XPATH, '//*[@id="logBulkEditFormWrapper"]/form/div[7]/div/mh-tags-select/dx-tag-box/div[1]/div[1]/div/div/dx-text-box/div/div[1]/input')
+        # tagInput.send_keys('JIRA')
+        # time.sleep(2)
+        # tagInput.send_keys(Keys.ENTER)
 
     # Description
     tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="logFormEditLogNoteInput"]')
