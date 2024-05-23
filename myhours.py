@@ -182,6 +182,7 @@ def modifyTrack(jira, description, epic_link) :
         for char in epic_link:
             projectInput.send_keys(char)
         
+        time.sleep(1)
         projectInput = tools.driver.find_element(By.XPATH, '//*[@id="logFormEditLogProjectInput"]/mh-select-box-toolbar-actions/dx-select-box/div[1]/div[1]/div/div/div/dx-text-box/div/div[1]/input')
         projectInput.send_keys(Keys.ENTER)
 
