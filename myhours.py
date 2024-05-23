@@ -171,10 +171,10 @@ def modifyTrack(jira, description, epic_link) :
     if (tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="logFormEditLogProjectInput"]/mh-select-box-toolbar-actions/dx-select-box/div/div[1]/div/div/div/dx-text-box/div/div[1]/input')) :
         print ("Select the project in a single track")
         # Project                                           
-        tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="logFormEditLogProjectInput"]/mh-select-box-toolbar-actions/dx-select-box/div/div[1]/div/div/div/dx-text-box/div/div[1]/input')  
-        projectLookup = tools.driver.find_element(By.XPATH, '//*[@id="logFormEditLogProjectInput"]/mh-select-box-toolbar-actions/dx-select-box/div/div[1]/div/div/div/dx-text-box/div/div[1]/input')
-        time.sleep(2)
-        projectLookup.click()
+        # tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="logFormEditLogProjectInput"]/mh-select-box-toolbar-actions/dx-select-box/div/div[1]/div/div/div/dx-text-box/div/div[1]/input')  
+        # projectLookup = tools.driver.find_element(By.XPATH, '//*[@id="logFormEditLogProjectInput"]/mh-select-box-toolbar-actions/dx-select-box/div/div[1]/div/div/div/dx-text-box/div/div[1]/input')
+        # time.sleep(2)
+        # projectLookup.click()
                                                    
         tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="logFormEditLogProjectInput"]/mh-select-box-toolbar-actions/dx-select-box/div/div[1]/div/div/div/dx-text-box/div/div[1]/input')  
         time.sleep(2)
@@ -188,11 +188,11 @@ def modifyTrack(jira, description, epic_link) :
 
         print ("Select the task")
         # Task
-        tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="trackPageEditFormTask"]/mh-select-box-toolbar-actions/dx-select-box/div[1]/div[1]/div/div/div/dx-text-box/div/div[1]/input')
-        taskLookup = tools.driver.find_element(By.XPATH, '//*[@id="trackPageEditFormTask"]/mh-select-box-toolbar-actions/dx-select-box/div[1]/div[1]/div/div/div/dx-text-box/div/div/input')
-        taskLookup.click()
+        # tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="trackPageEditFormTask"]/mh-select-box-toolbar-actions/dx-select-box/div[1]/div[1]/div/div/div/dx-text-box/div/div[1]/input')
+        # taskLookup = tools.driver.find_element(By.XPATH, '//*[@id="trackPageEditFormTask"]/mh-select-box-toolbar-actions/dx-select-box/div[1]/div[1]/div/div/div/dx-text-box/div/div/input')
+        # taskLookup.click()
 
-        time.sleep(1)
+        # time.sleep(1)
         
         tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="trackPageEditFormTask"]/mh-select-box-toolbar-actions/dx-select-box/div[1]/div[1]/div/div/div/dx-text-box/div/div[1]/input')
         projectInput = tools.driver.find_element(By.XPATH, '//*[@id="trackPageEditFormTask"]/mh-select-box-toolbar-actions/dx-select-box/div[1]/div[1]/div/div/div/dx-text-box/div/div[1]/input')
@@ -202,9 +202,9 @@ def modifyTrack(jira, description, epic_link) :
     
         print ("Select the TAG")
         # TAG
-        tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="logFormEditLogTagsInput"]/dx-tag-box/div[1]/div[1]/div/div/dx-text-box/div/div[1]/input')
-        tagLookup = tools.driver.find_element(By.XPATH, '//*[@id="logFormEditLogTagsInput"]/dx-tag-box/div[1]/div[1]/div/div/dx-text-box/div/div[1]')
-        tagLookup.click()
+        # tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="logFormEditLogTagsInput"]/dx-tag-box/div[1]/div[1]/div/div/dx-text-box/div/div[1]/input')
+        # tagLookup = tools.driver.find_element(By.XPATH, '//*[@id="logFormEditLogTagsInput"]/dx-tag-box/div[1]/div[1]/div/div/dx-text-box/div/div[1]')
+        # tagLookup.click()
 
         tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="logFormEditLogTagsInput"]/dx-tag-box/div[1]/div[1]/div/div/dx-text-box/div/div[1]/input')  
         tagInput = tools.driver.find_element(By.XPATH, '//*[@id="logFormEditLogTagsInput"]/dx-tag-box/div[1]/div[1]/div/div/dx-text-box/div/div[1]/input')
