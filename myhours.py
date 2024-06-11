@@ -167,7 +167,7 @@ def startTrackWithDescription_1(jira, description, epic_link) :
 
 def modifyTrack(jira, description, epic_link) :
 
-    # Need to test if we are in bulk edit or not
+    # Need to test if we are in bulk edit (many hours already there) or not
     if (tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="logFormEditLogProjectInput"]/mh-select-box-toolbar-actions/dx-select-box/div/div[1]/div/div/div/dx-text-box/div/div[1]/input')) :
         print ("Select the project in a single track")
         # Project                                           
@@ -201,6 +201,14 @@ def modifyTrack(jira, description, epic_link) :
         projectInput.send_keys(jira)
         time.sleep(1) # To fast if not present
         projectInput.send_keys(Keys.ENTER)
+
+        # Need to test if the following tag is present
+        # means that the task is unknown
+        if (tools.waitLoadingPageByXPATH2(dealy_properties, '/html/body/mh-root/div/div/div/div/div[2]/div/div[1]/div/div/mh-create-new-project-task-inline-form/form/div/div/button')) :
+            # Need to press CREATE button
+            createTask = tools.driver.find_element(By.XPATH, '/html/body/mh-root/div/div/div/div/div[2]/div/div[1]/div/div/mh-create-new-project-task-inline-form/form/div/div/button')
+            createTask.click()
+            time.sleep(2)
     
         print ("Select the TAG")
         # TAG
