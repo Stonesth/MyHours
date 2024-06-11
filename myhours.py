@@ -83,6 +83,20 @@ def startTrackWithDescription(jira, description, epic_link) :
     tools.waitLoadingPageByXPATH2(20, '/html/body/mh-root/div/div/mh-large-layout/div/ng-component/mh-track-navigation-bar/div/div[1]') # change since the 22-05-2024 : timeStep1
     
     time.sleep(2)
+
+    # To avoid the problem of the Project that don't appear
+    # I found the solution to click on the button day / week
+    # week = //*[@id="switchToWeekTrackBtn"]/div/span
+    # day = //*[@id="switchToTimerBtn"]/div/span
+    tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="switchToWeekTrackBtn"]/div/span')
+    switchToWeekTrackBtn = tools.driver.find_element(By.XPATH, '//*[@id="switchToWeekTrackBtn"]/div/span')
+    switchToWeekTrackBtn.click()
+    time.sleep(2)
+    tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="switchToTimerBtn"]/div/span')
+    switchToTimerBtn = tools.driver.find_element(By.XPATH, '//*[@id="switchToTimerBtn"]/div/span')
+    switchToTimerBtn.click()
+    time.sleep(2)
+
     # Need to check if already a track without description is started
     if (tools.waitLoadingPageByXPATH2(10, '/html/body/mh-root/div/div/mh-large-layout/div/ng-component/mh-log-list/div/mh-log-item[1]/div/div/div/div[1]/div/div[1]/mh-log-item-details/div/div/i')) :
         description_text = tools.driver.find_element(By.XPATH, '/html/body/mh-root/div/div/mh-large-layout/div/ng-component/mh-log-list/div/mh-log-item[1]/div/div/div/div[1]/div/div[1]/mh-log-item-details/div/div/i')
