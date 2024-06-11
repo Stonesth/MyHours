@@ -181,20 +181,6 @@ def startTrackWithDescription_1(jira, description, epic_link) :
 
 def modifyTrack(jira, description, epic_link) :
 
-    # To avoid the problem of the Project that don't appear
-    # I found the solution to click on the button day / week
-    # week = //*[@id="switchToWeekTrackBtn"]/div/span
-    # day = //*[@id="switchToTimerBtn"]/div/span
-    tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="switchToWeekTrackBtn"]/div/span')
-    switchToWeekTrackBtn = tools.driver.find_element(By.XPATH, '//*[@id="switchToWeekTrackBtn"]/div/span')
-    switchToWeekTrackBtn.click()
-    time.sleep(2)
-    tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="switchToTimerBtn"]/div/span')
-    switchToTimerBtn = tools.driver.find_element(By.XPATH, '//*[@id="switchToTimerBtn"]/div/span')
-    switchToTimerBtn.click()
-    time.sleep(2)
-    
-
     # Need to test if we are in bulk edit (many hours already there) or not
     if (tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="logFormEditLogProjectInput"]/mh-select-box-toolbar-actions/dx-select-box/div/div[1]/div/div/div/dx-text-box/div/div[1]/input')) :
         print ("Select the project in a single track")
