@@ -171,9 +171,11 @@ def modifyTrack(jira, description, epic_link) :
     # I found the solution to click on the button day / week
     # week = //*[@id="switchToWeekTrackBtn"]/div/span
     # day = //*[@id="switchToTimerBtn"]/div/span
+    tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="switchToWeekTrackBtn"]/div/span')
     switchToWeekTrackBtn = tools.driver.find_element(By.XPATH, '//*[@id="switchToWeekTrackBtn"]/div/span')
     switchToWeekTrackBtn.click()
     time.sleep(2)
+    tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="switchToTimerBtn"]/div/span')
     switchToTimerBtn = tools.driver.find_element(By.XPATH, '//*[@id="switchToTimerBtn"]/div/span')
     switchToTimerBtn.click()
     time.sleep(2)
