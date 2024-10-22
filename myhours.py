@@ -146,21 +146,21 @@ def startTrackWithDescription(jira, description, epic_link) :
     time.sleep(2)    
 
 def changetheTag() : 
+    time.sleep(2)
     ##########################################################
     # For the moment there is an issue in the site of MyHours
     # He don't add the select the TAG
     # Need to reactivate/deactivate this section when the issue is fixed
     ##########################################################
     # Localiser l'élément avec l'attribut style="visibility: hidden;"
+    tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@style="visibility: hidden;"]')
     element = tools.driver.find_element(By.XPATH, '//*[@style="visibility: hidden;"]')
 
     # Supprimer l'attribut style="visibility: hidden;"
     tools.driver.execute_script("arguments[0].style.visibility='visible';", element)
 
-
     # Vérifier que l'attribut a été supprimé
     print("Attribut 'visibility' supprimé")
-    time.sleep(2)
     
     tools.waitLoadingPageByXPATH2(dealy_properties, '/html/body/mh-root/div/div/mh-large-layout/div/ng-component/mh-log-list/div/mh-log-item[1]/div/div/div/div[1]/div/div[2]/mh-log-item-toolbar/div/div/mh-button[1]')
     expandButton = tools.driver.find_element(By.XPATH, '/html/body/mh-root/div/div/mh-large-layout/div/ng-component/mh-log-list/div/mh-log-item[1]/div/div/div/div[1]/div/div[2]/mh-log-item-toolbar/div/div/mh-button[1]')
