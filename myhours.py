@@ -328,24 +328,30 @@ def modifyTrack(jira, description, epic_link) :
 
         # Need to test if the following tag is present
         # means that the task is unknown
-        if (tools.waitLoadingPageByXPATH2(dealy_properties, '/html/body/mh-root/div/div/div/div/div[2]/div/div[1]/div/div/mh-create-new-project-task-inline-form/form/div/div/button')) :
+        if (tools.waitLoadingPageByXPATH2(3, '/html/body/mh-root/div/div/div/div/div[2]/div/div[1]/div/div/mh-create-new-project-task-inline-form/form/div/div/button')) :
             # Need to press CREATE button
             createTask = tools.driver.find_element(By.XPATH, '/html/body/mh-root/div/div/div/div/div[2]/div/div[1]/div/div/mh-create-new-project-task-inline-form/form/div/div/button')
             createTask.click()
             time.sleep(2)
     
         print ("Select the TAG")
-        # TAG
-        # tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="logFormEditLogTagsInput"]/dx-tag-box/div[1]/div[1]/div/div/dx-text-box/div/div[1]/input')
-        # tagLookup = tools.driver.find_element(By.XPATH, '//*[@id="logFormEditLogTagsInput"]/dx-tag-box/div[1]/div[1]/div/div/dx-text-box/div/div[1]')
-        # tagLookup.click()
-
         tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="logFormEditLogTagsInput"]/dx-tag-box/div[1]/div[1]/div/div/dx-text-box/div/div[1]/input')  
         tagInput = tools.driver.find_element(By.XPATH, '//*[@id="logFormEditLogTagsInput"]/dx-tag-box/div[1]/div[1]/div/div/dx-text-box/div/div[1]/input')
         tagInput.send_keys('JIRA')
         time.sleep(2)
         tagInput.send_keys(Keys.ENTER)
 
+        print ("Description")
+        # Description
+        tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="logFormEditLogNoteInput"]')
+        logAddEditDescription = tools.driver.find_element(By.XPATH, '//*[@id="logFormEditLogNoteInput"]')
+        logAddEditDescription.click()
+        logAddEditDescription.send_keys(description)
+    
+        # editLog
+        tools.waitLoadingPageByID2(dealy_properties, 'saveTimeLogBtn')
+        editLog = tools.driver.find_element(By.ID, 'saveTimeLogBtn')
+        editLog.click()
 
     else :
         print ("Select the project in a group track")
@@ -401,17 +407,17 @@ def modifyTrack(jira, description, epic_link) :
         ##########################################################
         addTheTag()
    
-    print ("On devrait avoir fini la modification du track")
-    # Description
-    tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="logFormEditLogNoteInput"]/div/textarea')
-    logAddEditDescription = tools.driver.find_element(By.XPATH, '//*[@id="logFormEditLogNoteInput"]/div/textarea')
-    logAddEditDescription.click()
-    logAddEditDescription.send_keys(description)
+        print ("Description")
+        # Description
+        tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="logFormEditLogNoteInput"]/div/textarea')
+        logAddEditDescription = tools.driver.find_element(By.XPATH, '//*[@id="logFormEditLogNoteInput"]/div/textarea')
+        logAddEditDescription.click()
+        logAddEditDescription.send_keys(description)
     
-    # editLog
-    tools.waitLoadingPageByID2(dealy_properties, 'saveTimeLogBtn')
-    editLog = tools.driver.find_element(By.ID, 'saveTimeLogBtn')
-    editLog.click()
+        # editLog
+        tools.waitLoadingPageByID2(dealy_properties, 'saveTimeLogBtn')
+        editLog = tools.driver.find_element(By.ID, 'saveTimeLogBtn')
+        editLog.click()
 
 def addTheTag() : 
     # TAG
