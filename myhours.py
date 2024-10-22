@@ -419,6 +419,9 @@ def modifyTrack(jira, description, epic_link) :
         editLog = tools.driver.find_element(By.ID, 'saveTimeLogBtn')
         editLog.click()
 
+        # Wait the reload of the page
+        tools.waitLoadingPageByXPATH2(dealy_properties, '/html/body/mh-root/div/div/mh-large-layout/div/ng-component/div[2]/mh-track-navigation-bar/div/mh-header/div/h1')
+
         changetheTag()
 
 def addTheTag() : 
