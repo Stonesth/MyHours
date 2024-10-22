@@ -419,6 +419,8 @@ def modifyTrack(jira, description, epic_link) :
         editLog = tools.driver.find_element(By.ID, 'saveTimeLogBtn')
         editLog.click()
 
+        changetheTag()
+
 def addTheTag() : 
     # TAG
     ##########################################################
