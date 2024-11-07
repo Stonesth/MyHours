@@ -22,7 +22,7 @@ propertiesFolder_path = save_path + "Properties"
 user_text = tools.readProperty(propertiesFolder_path, 'Myhours', 'user_text=')
 password_text = tools.readProperty(propertiesFolder_path, 'Myhours', 'password_text=')
 
-dealy_properties = 30
+dealy_properties = 5
 
 def connectToMyHours() :
     tools.driver.get('https://app.myhours.com')
