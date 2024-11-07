@@ -184,6 +184,7 @@ def changetheTag() :
     tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="logFormEditLogTagsInput"]/dx-tag-box/div/div[1]/div/div/dx-text-box/div/div[1]/input')  
     tagInput = tools.driver.find_element(By.XPATH, '//*[@id="logFormEditLogTagsInput"]/dx-tag-box/div/div[1]/div/div/dx-text-box/div/div[1]/input')
     tagInput.click()
+    time.sleep(1)
     tagInput.send_keys('JIRA')
     time.sleep(2)
     tagInput.send_keys(Keys.ENTER)
