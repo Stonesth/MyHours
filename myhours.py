@@ -123,35 +123,12 @@ def startTrackWithDescription(jira, description, epic_link) :
     # Do the modification of the track
     print ("Do the modification of the track")
     modifyTrack(jira, description, epic_link)
-    # if (tools.waitLoadingPageByXPATH2(10, '//*[@id="logBulkEditFormWrapper"]/form/div[1]/div/h5')) :
-    #     time.sleep(2)
-    #     # Do the modification of the track
-    #     print ("Do the modification of the track")
-    #     modifyTrack(jira, description, epic_link)
-    # else :
-    #     print ("Try to overide the class and removed the string hover-child")
-    #     # if (tools.waitLoadingPageByXPATH2(10, '/html/body/div[1]/div/div/track-page/div/div[5]/div/div[2]/div[1]/log-display/div/div[1]/div/div[1]/log-details-display/div/div[2]/a[1]')) :
-    #     #     tools.driver.execute_script("arguments[0].setAttribute('class', 'mr-3 small ng-scope')", tools.driver.find_element(By.XPATH, '/html/body/div[1]/div/div/track-page/div/div[5]/div/div[2]/div[1]/log-display/div/div[1]/div/div[1]/log-details-display/div/div[2]/a[1][@class="hover-child mr-3 small ng-scope"]'))
-    #     #     time.sleep(2)
-
-    #     if (tools.waitLoadingPageByXPATH2(10, '//*[@id="logBulkEditFormWrapper"]')) : # change since the 22-05-2024
-    #         timeStep1 = tools.driver.find_element(By.XPATH, '//*[@id="logBulkEditFormWrapper"]') # change since the 22-05-2024
-    #         timeStep1.click()   
-    #         time.sleep(2)
-    #         # Do the modification of the track
-    #         print ("Do the modification of the track")
-    #         modifyGroupTrack(jira, description, epic_link)
         
     # To let the time to refresh the page
     time.sleep(2)    
 
 def changetheTag() : 
     time.sleep(2)
-    ##########################################################
-    # For the moment there is an issue in the site of MyHours
-    # He don't add the select the TAG
-    # Need to reactivate/deactivate this section when the issue is fixed
-    ##########################################################
     # Localiser l'élément avec l'attribut style="visibility: hidden;"
     tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@style="visibility: hidden;"]')
     element = tools.driver.find_element(By.XPATH, '//*[@style="visibility: hidden;"]')
@@ -271,19 +248,10 @@ def modifyTrack(jira, description, epic_link) :
         
         # Client & Project
         addClientAndProjectSingleTrack(epic_link)
-        
-
-
         time.sleep(2)
 
-        print ("Select the task")
         # Task
-        # tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="trackPageEditFormTask"]/mh-select-box-toolbar-actions/dx-select-box/div[1]/div[1]/div/div/div/dx-text-box/div/div[1]/input')
-        # taskLookup = tools.driver.find_element(By.XPATH, '//*[@id="trackPageEditFormTask"]/mh-select-box-toolbar-actions/dx-select-box/div[1]/div[1]/div/div/div/dx-text-box/div/div/input')
-        # taskLookup.click()
-
-        # time.sleep(1)
-        
+        print ("Select the task")
         tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="trackPageEditFormTask"]/mh-select-box-toolbar-actions/dx-select-box/div[1]/div[1]/div/div/div/dx-text-box/div/div[1]/input')
         projectInput = tools.driver.find_element(By.XPATH, '//*[@id="trackPageEditFormTask"]/mh-select-box-toolbar-actions/dx-select-box/div[1]/div[1]/div/div/div/dx-text-box/div/div[1]/input')
         projectInput.send_keys(jira)
@@ -328,30 +296,12 @@ def modifyTrack(jira, description, epic_link) :
         # Client & Project
         addClientAndProjectGroupTrack(epic_link)
 
-        # # Need to test if the following tag is present
-        # # means that the task is unknown
-        # if (tools.waitLoadingPageByXPATH2(3, '/html/body/mh-root/div/div/div/div/div[2]/div/div[1]/div/div/mh-create-new-project-task-inline-form/form/div/div/button')) :
-        #     # Need to press CREATE button
-        #     createTask = tools.driver.find_element(By.XPATH, '/html/body/mh-root/div/div/div/div/div[2]/div/div[1]/div/div/mh-create-new-project-task-inline-form/form/div/div/button')
-        #     createTask.click()
-        #     time.sleep(2)
-
-        # time.sleep(1)
-        # tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="logBulkEditFormWrapper"]/form/div[4]/div/div/mh-project-task-select/mh-select-box-toolbar-actions/dx-select-box/div[1]/div[1]/div/div/div/dx-text-box/div/div[1]/input')
-        # taskLookup = tools.driver.find_element(By.XPATH, '//*[@id="logBulkEditFormWrapper"]/form/div[4]/div/div/mh-project-task-select/mh-select-box-toolbar-actions/dx-select-box/div/div[1]/div/div/div/dx-text-box/div/div[1]/input')
-        # taskLookup.click()
-
         print ("Select the task")
         # Task
-        ##########################################################
-        # For the moment there is an issue in the site of MyHours
-        # He don't recognize old project.
-        # Need to reactivate this section when the issue is fixed
-        ##########################################################
         tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="logBulkEditFormWrapper"]/form/div[4]/div/div/mh-project-task-select/mh-select-box-toolbar-actions/dx-select-box/div[1]/div[1]/div/div/div/dx-text-box/div/div[1]/input')
         projectInput = tools.driver.find_element(By.XPATH, '//*[@id="logBulkEditFormWrapper"]/form/div[4]/div/div/mh-project-task-select/mh-select-box-toolbar-actions/dx-select-box/div[1]/div[1]/div/div/div/dx-text-box/div/div[1]/input')
         projectInput.send_keys(jira)
-        time.sleep(1) # To fast if not present
+        time.sleep(2) # To fast if not present
         projectInput.send_keys(Keys.ENTER)
         
         # Need to test if the following tag is present
@@ -448,11 +398,6 @@ def addClientAndProjectGroupTrack(epic_link) :
 
 def addTheTag() : 
     # TAG
-    ##########################################################
-    # For the moment there is an issue in the site of MyHours
-    # He don't recognize old project.
-    # Need to reactivate this section when the issue is fixed
-    ##########################################################
     tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="logBulkEditFormWrapper"]/form/div[7]/div/mh-tags-select/dx-tag-box/div[1]/div[1]/div/div/dx-text-box/div/div[1]/input')  
     tagLookup = tools.driver.find_element(By.XPATH, '//*[@id="logBulkEditFormWrapper"]/form/div[7]/div/mh-tags-select/dx-tag-box/div/div[1]/div/div/dx-text-box/div/div[1]/input')
     tagLookup.click()
