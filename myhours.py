@@ -433,7 +433,10 @@ def addClientAndProjectGroupTrack(epic_link) :
         clientInput = tools.driver.find_element(By.XPATH, '//*[@id="clientId"]/mh-select-box-toolbar-actions/dx-select-box/div/div[1]/div/div/div/dx-text-box/div/div[1]/input')
         clientInput.click()
         clientInput.send_keys('Delta Lloyd Life')
-        clientInput.send_keys(Keys.ENTER)
+        time.sleep(1)
+        selectClientInput = tools.driver.find_element(By.XPATH, '/html/body/mh-root/div/div/div/div/div[1]')
+        selectClientInput.click()
+        
 
 
 
