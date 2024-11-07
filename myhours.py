@@ -437,8 +437,10 @@ def addClientAndProjectGroupTrack(epic_link) :
         selectClientInput = tools.driver.find_element(By.XPATH, '/html/body/mh-root/div/div/div/div/div[1]')
         selectClientInput.click()
         
-
-
+        # Click the Create button
+        time.sleep(1)
+        create_button = tools.driver.find_element(By.XPATH, '//*[@id="logBulkEditFormWrapper"]/form/div[3]/div/div/mh-project-select/mh-add-project-modal/sds-modal/div[2]/div/div/div[2]/mh-add-project-form/form/div[3]/mh-button[1]/button')
+        create_button.click()
 
 def addTheTag() : 
     # TAG
