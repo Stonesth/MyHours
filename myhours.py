@@ -424,7 +424,16 @@ def addClientAndProjectGroupTrack(epic_link) :
     projectInput.send_keys(epic_link)
     time.sleep(2)
     projectInput.send_keys(Keys.ENTER)
-    projectInput.send_keys(Keys.ENTER)
+
+    # Need to test if the following tag is present
+    # means that the Project is unknown
+    if (tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="clientId"]/mh-select-box-toolbar-actions/dx-select-box/div/div[1]/div/div/div/dx-text-box/div/div[1]/input')) :
+        # Need to select the client
+        clientInput = tools.driver.find_element(By.XPATH, '//*[@id="clientId"]/mh-select-box-toolbar-actions/dx-select-box/div/div[1]/div/div/div/dx-text-box/div/div[1]/input')
+        clientInput.click()
+        clientInput.send_keys('Delta Lloyd Life')
+        clientInput.send_keys(Keys.ENTER)
+
 
 
 def addTheTag() : 
