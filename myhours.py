@@ -180,11 +180,6 @@ def changetheTag() :
     # Click the TAG area
     print ("On rempli le TAG par JIRA")
     # TAG
-    ##########################################################
-    # For the moment there is an issue in the site of MyHours
-    # He don't recognize old project.
-    # Need to reactivate this section when the issue is fixed
-    ##########################################################
     time.sleep(2)
     tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="logFormEditLogTagsInput"]/dx-tag-box/div/div[1]/div/div/dx-text-box/div/div[1]/input')  
     tagInput = tools.driver.find_element(By.XPATH, '//*[@id="logFormEditLogTagsInput"]/dx-tag-box/div/div[1]/div/div/dx-text-box/div/div[1]/input')
@@ -207,11 +202,6 @@ def changetheTag() :
     track.click()
 
     # TAG
-    ##########################################################
-    # For the moment there is an issue in the site of MyHours
-    # He don't recognize old project.
-    # Need to reactivate this section when the issue is fixed
-    ##########################################################
     tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="logBulkEditFormWrapper"]/form/div[7]/div/mh-tags-select/dx-tag-box/div/div[1]/div/div/dx-text-box/div/div[1]')  
     tagInput = tools.driver.find_element(By.XPATH, '//*[@id="logBulkEditFormWrapper"]/form/div[7]/div/mh-tags-select/dx-tag-box/div/div[1]/div/div/dx-text-box/div/div[1]')
     tagInput.click()
