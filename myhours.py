@@ -354,6 +354,24 @@ def addClientAndProjectSingleTrack(epic_link) :
         time.sleep(1)
         projectInput = tools.driver.find_element(By.XPATH, '//*[@id="logFormEditLogProjectInput"]/mh-select-box-toolbar-actions/dx-select-box/div[1]/div[1]/div/div/div/dx-text-box/div/div[1]/input')
         projectInput.send_keys(Keys.ENTER)
+
+        # Need to test if the following tag is present
+        # means that the Project is unknown
+        time.sleep(2)
+        if (tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="clientId"]/mh-select-box-toolbar-actions/dx-select-box/div/div[1]/div/div/div/dx-text-box/div/div[1]/input')) :
+            # Need to select the client
+            clientInput = tools.driver.find_element(By.XPATH, '//*[@id="clientId"]/mh-select-box-toolbar-actions/dx-select-box/div/div[1]/div/div/div/dx-text-box/div/div[1]/input')
+            clientInput.click()
+            clientInput.send_keys('Delta Lloyd Life')
+            time.sleep(1)
+            selectClientInput = tools.driver.find_element(By.XPATH, '/html/body/mh-root/div/div/div/div/div[1]')
+            selectClientInput.click()
+            
+            # Click the Create button
+            time.sleep(1)
+            create_button = tools.driver.find_element(By.XPATH, '//*[@id="logFormEditLogProjectInput"]/mh-add-project-modal/sds-modal/div[2]/div/div/div[2]/mh-add-project-form/form/div[3]/mh-button[1]/button')
+            create_button.click()
+
     except selenium.common.exceptions.StaleElementReferenceException:
         tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="logFormEditLogProjectInput"]/mh-select-box-toolbar-actions/dx-select-box/div/div[1]/div/div/div/dx-text-box/div/div[1]/input')  
         projectInput = tools.driver.find_element(By.XPATH, '//*[@id="logFormEditLogProjectInput"]/mh-select-box-toolbar-actions/dx-select-box/div/div[1]/div/div/div/dx-text-box/div/div[1]/input')
