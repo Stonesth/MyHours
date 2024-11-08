@@ -301,7 +301,7 @@ def modifyTrack(jira, description, epic_link) :
         tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="logBulkEditFormWrapper"]/form/div[4]/div/div/mh-project-task-select/mh-select-box-toolbar-actions/dx-select-box/div[1]/div[1]/div/div/div/dx-text-box/div/div[1]/input')
         projectInput = tools.driver.find_element(By.XPATH, '//*[@id="logBulkEditFormWrapper"]/form/div[4]/div/div/mh-project-task-select/mh-select-box-toolbar-actions/dx-select-box/div[1]/div[1]/div/div/div/dx-text-box/div/div[1]/input')
         projectInput.send_keys(jira)
-        time.sleep(2) # To fast if not present
+        time.sleep(3) # To fast if not present
         projectInput.send_keys(Keys.ENTER)
         
         # Need to test if the following tag is present
