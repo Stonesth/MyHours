@@ -311,10 +311,10 @@ def modifyTrack(jira, description, epic_link) :
             createTask = tools.driver.find_element(By.XPATH, '/html/body/mh-root/div/div/div/div/div[2]/div/div[1]/div/div/mh-create-new-project-task-inline-form/form/div/div/button')
             createTask.click()
             time.sleep(2)
-        time.sleep(1)
-        tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="logBulkEditFormWrapper"]/form/div[4]/div/div/mh-project-task-select/mh-select-box-toolbar-actions/dx-select-box/div[1]/div[1]/div/div/div/dx-text-box/div/div[1]/input')
-        taskLookup = tools.driver.find_element(By.XPATH, '//*[@id="logBulkEditFormWrapper"]/form/div[4]/div/div/mh-project-task-select/mh-select-box-toolbar-actions/dx-select-box/div/div[1]/div/div/div/dx-text-box/div/div[1]/input')
-        taskLookup.click()
+            time.sleep(1)
+            tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="logBulkEditFormWrapper"]/form/div[4]/div/div/mh-project-task-select/mh-select-box-toolbar-actions/dx-select-box/div[1]/div[1]/div/div/div/dx-text-box/div/div[1]/input')
+            taskLookup = tools.driver.find_element(By.XPATH, '//*[@id="logBulkEditFormWrapper"]/form/div[4]/div/div/mh-project-task-select/mh-select-box-toolbar-actions/dx-select-box/div/div[1]/div/div/div/dx-text-box/div/div[1]/input')
+            taskLookup.click()
 
         # TAG
         print ("Select the TAG")
