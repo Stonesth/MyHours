@@ -310,11 +310,16 @@ def modifyTrack(jira, description, epic_link) :
             # Need to press CREATE button
             createTask = tools.driver.find_element(By.XPATH, '/html/body/mh-root/div/div/div/div/div[2]/div/div[1]/div/div/mh-create-new-project-task-inline-form/form/div/div/button')
             createTask.click()
-            time.sleep(2)
-            time.sleep(1)
+            time.sleep(3)
             tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="logBulkEditFormWrapper"]/form/div[4]/div/div/mh-project-task-select/mh-select-box-toolbar-actions/dx-select-box/div[1]/div[1]/div/div/div/dx-text-box/div/div[1]/input')
             taskLookup = tools.driver.find_element(By.XPATH, '//*[@id="logBulkEditFormWrapper"]/form/div[4]/div/div/mh-project-task-select/mh-select-box-toolbar-actions/dx-select-box/div/div[1]/div/div/div/dx-text-box/div/div[1]/input')
             taskLookup.click()
+
+            # To avoid the problem after creation, click on the description fields
+            time.sleep(1)
+            tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="logFormEditLogNoteInput"]')
+            logAddEditDescription = tools.driver.find_element(By.XPATH, '//*[@id="logFormEditLogNoteInput"]')
+            logAddEditDescription.click()
 
         # TAG
         print ("Select the TAG")
@@ -412,7 +417,7 @@ def addClientAndProjectGroupTrack(epic_link) :
         # Click the Create button
         time.sleep(1)
         create_button = tools.driver.find_element(By.XPATH, '//*[@id="logBulkEditFormWrapper"]/form/div[3]/div/div/mh-project-select/mh-add-project-modal/sds-modal/div[2]/div/div/div[2]/mh-add-project-form/form/div[3]/mh-button[1]/button')
-        create_button.click()
+        create_button.click()        
 
 def addTheTag() : 
     # TAG
