@@ -27,7 +27,7 @@ password_text = tools.readProperty(propertiesFolder_path, 'Myhours', 'password_t
 user_text2 = tools.readProperty(propertiesFolder_path, 'Myhours', 'user_time_track=')
 password_text2 = tools.readProperty(propertiesFolder_path, 'Myhours', 'pass_time_track=')
 
-dealy_properties = 30
+dealy_properties = 5
 
 def connectToMyHours() :
     tools.driver.get('https://app.myhours.com')
@@ -109,6 +109,46 @@ def startTrack() :
         # tools.waitLoadingPageByID2(dealy_properties, 'startNewButton') # change since the 22-05-2024 : timeStep1
         # timeStep1 = tools.driver.find_element(By.ID, 'startNewButton') # change since the 22-05-2024 : timeStep1
         timeStep1.click()
+
+# it's for timetrackingwindsurf.web.app
+def startTrackWithDescription(jira, description, epic_link) :
+    tools.waitLoadingPageByXPATH2(20, '//*[@id="daily-tasks-container"]')
+
+    tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="expand-button-0"]')
+    switchToWeekTrackBtn = tools.driver.find_element(By.XPATH, '//*[@id="expand-button-0"]')
+    switchToWeekTrackBtn.click()
+
+    tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="edit-entry-0-0"]')
+    switchToWeekTrackBtn = tools.driver.find_element(By.XPATH, '//*[@id="edit-entry-0-0"]')
+    switchToWeekTrackBtn.click()
+
+    tools.waitLoadingPageByXPATH2(dealy_properties, '/html/body/div[3]/div[3]/div/div[1]/div/div[1]/label')
+    switchToWeekTrackBtn = tools.driver.find_element(By.XPATH, '/html/body/div[3]/div[3]/div/div[1]/div/div[1]/label')
+    switchToWeekTrackBtn.click()
+    switchToWeekTrackBtn.send_keys(epic_link)
+    switchToWeekTrackBtn.send_keys(Keys.ENTER)
+
+    tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id=":rg:"]')
+    switchToWeekTrackBtn = tools.driver.find_element(By.XPATH, '//*[@id=":rg:"]')
+    switchToWeekTrackBtn.click()
+    switchToWeekTrackBtn.send_keys(jira)
+    switchToWeekTrackBtn.send_keys(Keys.ENTER)
+    
+    tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id=":rl:"]')
+    switchToWeekTrackBtn = tools.driver.find_element(By.XPATH, '//*[@id=":rl:"]')
+    switchToWeekTrackBtn.click()
+    switchToWeekTrackBtn.send_keys(description)
+    switchToWeekTrackBtn.send_keys(Keys.ENTER)
+
+    tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id=":rm:"]')
+    switchToWeekTrackBtn = tools.driver.find_element(By.XPATH, '//*[@id=":rm:"]')
+    switchToWeekTrackBtn.click()
+    switchToWeekTrackBtn.send_keys("JIRA")
+
+    tools.waitLoadingPageByXPATH2(dealy_properties, '/html/body/div[3]/div[3]/div/div[2]/button[2]')
+    switchToWeekTrackBtn = tools.driver.find_element(By.XPATH, '/html/body/div[3]/div[3]/div/div[2]/button[2]')
+    switchToWeekTrackBtn.click()
+
 
 def startTrackWithDescription(jira, description, epic_link) :
     tools.waitLoadingPageByXPATH2(20, '/html/body/mh-root/div/div/mh-large-layout/div/ng-component/div[2]/mh-track-navigation-bar/div/mh-header/div/h1') # change since the 22-05-2024 : timeStep1
