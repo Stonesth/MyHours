@@ -28,7 +28,7 @@ def connectToMyHours() :
     tools.driver.get('https://app.myhours.com')
 
 def connectToMyTimeTrack() :
-    tools.driver.get('hhttps://timetrackingwindsurf.web.app/')
+    tools.driver.get('https://timetrackingwindsurf.web.app/')
 
 
 def enterCredentials() :
