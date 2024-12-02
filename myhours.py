@@ -47,12 +47,12 @@ def enterCredentials() :
     password.send_keys(Keys.ENTER)
 
 def enterCredentials2() :
-    tools.waitLoadingPageByID2(dealy_properties, 'username-field') # change since the 22-05-2024 : email
-    username = tools.driver.find_element(By.ID, "username-field") # change since the 22-05-2024 : email
+    tools.waitLoadingPageByID2(dealy_properties, 'email') # change since the 22-05-2024 : email
+    username = tools.driver.find_element(By.ID, "email") # change since the 22-05-2024 : email
     username.send_keys(user_text2)
 
-    tools.waitLoadingPageByID2(dealy_properties, 'password-field') # change since the 22-05-2024 : password
-    password = tools.driver.find_element(By.ID, "password-field") # change since the 22-05-2024 : password
+    tools.waitLoadingPageByID2(dealy_properties, 'password') # change since the 22-05-2024 : password
+    password = tools.driver.find_element(By.ID, "password") # change since the 22-05-2024 : password
     password.send_keys(password_text2)
     password.send_keys(Keys.ENTER)
 
