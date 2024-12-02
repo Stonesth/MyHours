@@ -125,15 +125,15 @@ def startTrackWithDescription2(jira, description, epic_link) :
     switchToWeekTrackBtn.send_keys(Keys.ENTER)
     time.sleep(2)
 
-    tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id=":r45:"]')
-    switchToWeekTrackBtn = tools.driver.find_element(By.XPATH, '//*[@id=":r45:"]')
+    tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id=":ru1:"]')
+    switchToWeekTrackBtn = tools.driver.find_element(By.XPATH, '//*[@id=":ru1:"]')
     switchToWeekTrackBtn.click()
     switchToWeekTrackBtn.send_keys(jira)
     switchToWeekTrackBtn.send_keys(Keys.ENTER)
     time.sleep(2)
     
-    tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id=":r59:"]')
-    switchToWeekTrackBtn = tools.driver.find_element(By.XPATH, '//*[@id=":r59:"]')
+    tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id=":ru3:"]')
+    switchToWeekTrackBtn = tools.driver.find_element(By.XPATH, '//*[@id=":ru3:"]')
     switchToWeekTrackBtn.click()
     time.sleep(2)
     switchToWeekTrackBtn.send_keys(description)
@@ -148,8 +148,8 @@ def startTrackWithDescription2(jira, description, epic_link) :
     switchToWeekTrackBtn.send_keys(Keys.ENTER)
     time.sleep(2)
 
-    tools.waitLoadingPageByXPATH2(dealy_properties, '/html/body/div[3]/div[3]/div/div[2]/button[2]')
-    switchToWeekTrackBtn = tools.driver.find_element(By.XPATH, '/html/body/div[3]/div[3]/div/div[2]/button[2]')
+    tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="bulk-edit-dialog"]/div[3]/div/div[2]/button[2]')
+    switchToWeekTrackBtn = tools.driver.find_element(By.XPATH, '//*[@id="bulk-edit-dialog"]/div[3]/div/div[2]/button[2]')
     switchToWeekTrackBtn.click()
     time.sleep(2)
 
