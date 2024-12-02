@@ -19,8 +19,13 @@ save_path = dirname(__file__)[ : -7]
 # save_path = os.path.dirname(os.path.abspath("__file__"))[ : -7]
 propertiesFolder_path = save_path + "Properties"
 
+# Myhours part
 user_text = tools.readProperty(propertiesFolder_path, 'Myhours', 'user_text=')
 password_text = tools.readProperty(propertiesFolder_path, 'Myhours', 'password_text=')
+
+# MyTimeTrack part
+user_text2 = tools.readProperty(propertiesFolder_path, 'Myhours', 'user_time_track=')
+password_text2 = tools.readProperty(propertiesFolder_path, 'Myhours', 'pass_time_track=')
 
 dealy_properties = 5
 
@@ -39,6 +44,16 @@ def enterCredentials() :
     tools.waitLoadingPageByID2(dealy_properties, 'password-field') # change since the 22-05-2024 : password
     password = tools.driver.find_element(By.ID, "password-field") # change since the 22-05-2024 : password
     password.send_keys(password_text)
+    password.send_keys(Keys.ENTER)
+
+def enterCredentials2() :
+    tools.waitLoadingPageByID2(dealy_properties, 'username-field') # change since the 22-05-2024 : email
+    username = tools.driver.find_element(By.ID, "username-field") # change since the 22-05-2024 : email
+    username.send_keys(user_text2)
+
+    tools.waitLoadingPageByID2(dealy_properties, 'password-field') # change since the 22-05-2024 : password
+    password = tools.driver.find_element(By.ID, "password-field") # change since the 22-05-2024 : password
+    password.send_keys(password_text2)
     password.send_keys(Keys.ENTER)
 
 def startTrack2() :
