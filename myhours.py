@@ -114,7 +114,7 @@ def startTrack() :
 def startTrackWithDescription2(jira, description, epic_link) :
     tools.waitLoadingPageByXPATH2(20, '//*[@id="daily-tasks-container"]')
 
-    tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="group-no-project-no-task-bulk-edit"]"]')
+    tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="group-no-project-no-task-bulk-edit"]')
     switchToWeekTrackBtn = tools.driver.find_element(By.XPATH, '//*[@id="group-no-project-no-task-bulk-edit"]')
     switchToWeekTrackBtn.click()
     time.sleep(2)
