@@ -116,39 +116,45 @@ def startTrackWithDescription2(jira, description, epic_link) :
 
     tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="expand-button-0"]')
     switchToWeekTrackBtn = tools.driver.find_element(By.XPATH, '//*[@id="expand-button-0"]')
-    time.sleep(20)
     switchToWeekTrackBtn.click()
+    time.sleep(2)
 
     tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="edit-entry-0-0"]')
     switchToWeekTrackBtn = tools.driver.find_element(By.XPATH, '//*[@id="edit-entry-0-0"]')
     switchToWeekTrackBtn.click()
+    time.sleep(2)
                                                         
     tools.waitLoadingPageByXPATH2(dealy_properties, '/html/body/div[3]/div[3]/div/div[1]/div/div[1]/div/div')
     switchToWeekTrackBtn = tools.driver.find_element(By.XPATH, '/html/body/div[3]/div[3]/div/div[1]/div/div[1]/div/div')
     switchToWeekTrackBtn.click()
     switchToWeekTrackBtn.send_keys(epic_link)
     switchToWeekTrackBtn.send_keys(Keys.ENTER)
+    time.sleep(2)
 
     tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id=":rg:"]')
     switchToWeekTrackBtn = tools.driver.find_element(By.XPATH, '//*[@id=":rg:"]')
     switchToWeekTrackBtn.click()
     switchToWeekTrackBtn.send_keys(jira)
     switchToWeekTrackBtn.send_keys(Keys.ENTER)
+    time.sleep(2)
     
     tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id=":rl:"]')
     switchToWeekTrackBtn = tools.driver.find_element(By.XPATH, '//*[@id=":rl:"]')
     switchToWeekTrackBtn.click()
     switchToWeekTrackBtn.send_keys(description)
     switchToWeekTrackBtn.send_keys(Keys.ENTER)
+    time.sleep(2)
 
     tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id=":rm:"]')
     switchToWeekTrackBtn = tools.driver.find_element(By.XPATH, '//*[@id=":rm:"]')
     switchToWeekTrackBtn.click()
     switchToWeekTrackBtn.send_keys("JIRA")
+    time.sleep(2)
 
     tools.waitLoadingPageByXPATH2(dealy_properties, '/html/body/div[3]/div[3]/div/div[2]/button[2]')
     switchToWeekTrackBtn = tools.driver.find_element(By.XPATH, '/html/body/div[3]/div[3]/div/div[2]/button[2]')
     switchToWeekTrackBtn.click()
+    time.sleep(2)
 
 
 def startTrackWithDescription(jira, description, epic_link) :
