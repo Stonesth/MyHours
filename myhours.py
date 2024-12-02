@@ -111,7 +111,7 @@ def startTrack() :
         timeStep1.click()
 
 # it's for timetrackingwindsurf.web.app
-def startTrackWithDescription(jira, description, epic_link) :
+def startTrackWithDescription2(jira, description, epic_link) :
     tools.waitLoadingPageByXPATH2(20, '//*[@id="daily-tasks-container"]')
 
     tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="expand-button-0"]')
