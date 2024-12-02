@@ -27,6 +27,10 @@ dealy_properties = 5
 def connectToMyHours() :
     tools.driver.get('https://app.myhours.com')
 
+def connectToMyTimeTrack() :
+    tools.driver.get('hhttps://timetrackingwindsurf.web.app/')
+
+
 def enterCredentials() :
     tools.waitLoadingPageByID2(dealy_properties, 'username-field') # change since the 22-05-2024 : email
     username = tools.driver.find_element(By.ID, "username-field") # change since the 22-05-2024 : email
@@ -36,6 +40,16 @@ def enterCredentials() :
     password = tools.driver.find_element(By.ID, "password-field") # change since the 22-05-2024 : password
     password.send_keys(password_text)
     password.send_keys(Keys.ENTER)
+
+def startTrack2() :
+    # Start the chrono
+    tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="daily-tasks-actions"]')
+
+    tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="add-task-button"]')
+    timeStep1 = tools.driver.find_element(By.XPATH, '//*[@id="add-task-button"]') # change since the 22-05-2024 : timeStep1
+    timeStep1.click()
+
+    
 
 def startTrack() :
     # Start the chrono
