@@ -116,6 +116,7 @@ def startTrackWithDescription2(jira, description, epic_link) :
 
     tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="expand-button-0"]')
     switchToWeekTrackBtn = tools.driver.find_element(By.XPATH, '//*[@id="expand-button-0"]')
+    time.sleep(20)
     switchToWeekTrackBtn.click()
 
     tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="edit-entry-0-0"]')
