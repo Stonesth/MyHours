@@ -58,10 +58,10 @@ def enterCredentials2() :
 
 def startTrack2() :
     # Start the chrono
-    tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="daily-tasks-actions"]')
+    tools.waitLoadingPageByXPATH2(dealy_properties, '/html/body/div/div/div[2]/div[1]/div[3]/button[1]')
 
-    tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="add-task-button"]')
-    timeStep1 = tools.driver.find_element(By.XPATH, '//*[@id="add-task-button"]') # change since the 22-05-2024 : timeStep1
+    # tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="add-task-button"]')
+    timeStep1 = tools.driver.find_element(By.XPATH, '/html/body/div/div/div[2]/div[1]/div[3]/button[1]') # change since the 22-05-2024 : timeStep1
     timeStep1.click()
 
     
