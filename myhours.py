@@ -51,10 +51,14 @@ def enterCredentials2() :
     username = tools.driver.find_element(By.ID, "email") # change since the 22-05-2024 : email
     username.send_keys(user_text2)
 
+    time.sleep(1)
+
     tools.waitLoadingPageByID2(dealy_properties, 'password') # change since the 22-05-2024 : password
     password = tools.driver.find_element(By.ID, "password") # change since the 22-05-2024 : password
     password.send_keys(password_text2)
     password.send_keys(Keys.ENTER)
+
+    time.sleep(1)
 
 def startTrack2() :
     # Start the chrono
