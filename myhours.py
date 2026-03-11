@@ -127,8 +127,9 @@ def startTrackWithDescription2(jira, description, epic_link) :
     switchToWeekTrackBtn = tools.driver.find_element(By.XPATH, '//*[@id="bulk-project-autocomplete"]')
     switchToWeekTrackBtn.send_keys(epic_link)
     switchToWeekTrackBtn.send_keys(Keys.DOWN)
+    time.sleep(1)
     switchToWeekTrackBtn.send_keys(Keys.ENTER)
-    # time.sleep(1)
+    time.sleep(1)
 
     tools.waitLoadingPageByXPATH2(dealy_properties, '//*[@id="bulk-task-name"]')
     switchToWeekTrackBtn = tools.driver.find_element(By.XPATH, '//*[@id="bulk-task-name"]')
